@@ -1,0 +1,31 @@
+Get vs Put
+
+Get                                                Put
+
+Requests the data from the server                  Sends the data to the server
+Parameters in the URL                              Parameters in the body
+There is limitation on maximim URL length          There is no limitation on the maximun URL length
+It is ok to be cached                              It is not ok to cache
+Should not change the server                       Can change the server 
+
+
+
+
+HTTP/1.1 vs HTTP/2
+
+HTTP/1.1                                            HTTP/2
+
+It uses textual protocols, which might              It uses binary protocol, which is more efficient and less  
+be error prone                                      error prone 
+
+The packet at the front of the line blocks          It is multiplexed, i.e., it can initiate multiple requests 
+the others from being transmitted                   in parallel over a TCP connection
+
+It does not use head compression                    It uses head compression to reduce caused by TCP's slow start
+                                                    mechanism
+
+Does not push likely to be used resources           It pushes likely to be used resources into browsers cache 
+into browser cache before they are requested        before they are requested 
+
+Supports non-encrypted connections as well          Supports only encrypted connections, increasing user and application 
+                                                    security
