@@ -1,0 +1,23 @@
+console.log(typeof(1))
+result : number
+
+console.log(typeof(1.1))
+result : number
+
+console.log(typeof("1.1"))
+result : string
+
+console.log(typeof(true))
+result : boolean
+
+console.log(typeof(null))
+result : object
+
+console.log(typeof(undefined))
+result : undefined
+
+console.log(typeof([]))
+result : object
+
+console.log(typeof({}))
+result : object
