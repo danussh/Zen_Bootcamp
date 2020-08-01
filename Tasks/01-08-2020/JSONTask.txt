@@ -1,0 +1,256 @@
+
+Problem 0 : Part A
+
+var cat = {
+ name: 'Fluffy',
+ activities: ['play', 'eat cat food'],
+ catFriends: [
+ {
+ name: 'bar',
+ activities: ['be grumpy', 'eat bread omblet'],
+ weight: 8,
+ furcolor: 'white'
+ }, 
+ {
+ name: 'foo',
+ activities: ['sleep', 'pre-sleep naps'],
+ weight: 3
+ }
+ ]
+}
+console.log(cat);
+
+// adding height
+cat["height"] = '2 feet'
+
+// adding weight
+cat["weight"] = 5
+
+//Changing name
+cat["name"] = "Fluffyy"
+
+// Listing friend's activities
+for (let i =0; i<cat.catFriends.length; i++){
+	console.log(cat.catFriends[i].activities)
+}
+
+
+//Printing friend's name
+for (let i =0; i<cat.catFriends.length; i++){
+	console.log(cat.catFriends[i].name)
+}
+
+//Total weight of friends
+let sum = 0
+for (let i =0; i<cat.catFriends.length; i++){
+	sum += cat.catFriends[i].weight
+}
+console.log(sum)
+
+// Number of activities of all cats
+let totalActivities = cat.activities.length
+for (let i =0; i<cat.catFriends.length; i++){
+	totalActivities += cat.catFriends[i].activities.length
+}
+console.log(totalActivities)
+
+//Adding two more activities
+for (let i =0; i<cat.catFriends.length; i++){
+	cat.catFriends[i].activities = 	cat.catFriends[i].activities.concat(['play', 'eat cat food'])
+}
+
+// Updating the fur color of bar
+for (let i =0; i<cat.catFriends.length; i++){
+	if (cat.catFriends[i].name === "bar"){
+			cat.catFriends[i].furcolor = "black"
+	}
+}
+
+Problem 0 : Part B
+
+var myCar = {
+ make: 'Bugatti',
+ model: 'Bugatti La Voiture Noire',
+ year: 2019,
+ accidents: [
+ {
+ date: '3/15/2019',
+ damage_points: '5000',
+ atFaultForAccident: true
+ },
+ {
+ date: '7/4/2022',
+ damage_points: '2200',
+ atFaultForAccident: true
+ },
+ {
+ date: '6/22/2021',
+ damage_points: '7900',
+ atFaultForAccident: true
+ }
+ ]
+}
+
+// Change atFaultForAccident to true
+for (let i =0; i<myCar.accidents.length; i++){
+	myCar.accidents[i].atFaultForAccident = true
+}
+
+//Print the dates of accidents
+for (let i =0; i<myCar.accidents.length; i++){
+	console.log(myCar.accidents[i].date)
+}
+
+
+Problem 1: Parsing an JSON object's Values:
+var obj = {name : "RajiniKanth", age : 33, hasPets : false};
+function printAllValues(obj) {
+ let arr = []
+ for (let i in obj){
+	arr.push(obj[i])
+ }
+ return arr
+}
+console.log(printAllValues(obj))
+
+
+Problem 2 : Parsing an JSON object's Keys:
+var obj = {name : "RajiniKanth", age : 33, hasPets : false};
+function printAllKeys(obj) {
+ let arr = []
+ for (let i in obj){
+	arr.push(i)
+ }
+ return arr
+}
+console.log(printAllKeys(obj))
+
+
+Problem 3: Parsing an JSON object and convert it to a list:
+var object = {name: "ISRO", age: 35, role: "Scientist"};
+function convertListToObject(obj) {
+ let arr = []
+ for (let i in obj){
+	arr.push([i, obj[i]])
+ }
+ return arr
+}
+console.log(convertListToObject(obj))
+
+
+
+Problem 4: Parsing a list and transform the first and last elements of it:
+var array = ["GUVI", "I", "am", "Geek"];
+function transformFirstAndLast(arr) {
+ newObject = {}
+ newObject[arr[0]] = arr[arr.length-1]
+ return newObject;
+}
+
+console.log(transformFirstAndLast(array))
+
+
+Problem 5: Parsing a list of lists and convert into a JSON object:
+
+var array = [["make", "Ford"], ["model", "Mustang"], ["year", 1964]];
+function fromListToObject(arr) {
+ var newObject = {};
+ for(let i=0; i<arr.length; i++){
+	newObject[arr[i][0]] = arr[i][1]
+ }
+ return newObject;
+}
+console.log(fromListToObject(array))
+
+Problem 6: Parsing a list of lists and convert into a JSON object:
+var array = [[["firstName", "Vasanth"], ["lastName", "Raja"], ["age", 24], ["role", "JSWizard"]], [["firstName", "Sri"], ["lastName", "Devi"], ["age", 28], ["role", "Coder"]]];
+function transformEmployeeData(arr) {
+ let tranformEmployeeList = [];
+ for(let j=0; j<arr.length; j++){
+	let newObject = {};
+ for(let i=0; i<arr[j].length; i++){
+	newObject[arr[j][i][0]] = arr[j][i][1]
+ }
+ tranformEmployeeList.push(newObject)
+ 
+} 
+ return tranformEmployeeList;
+}
+console.log(transformEmployeeData(array))
+
+Problem 7: Parsing two JSON objects and Compare:
+console.log("FAILED ["+ testName + "] Expected "+JSON.stringify(expected)+ ", but got " JSON.stringify(actual))
+var expected = {foo: 6, bar: 5};
+var actual = {foo: 5, bar: 6}
+function assertObjectsEqual(actual, expected, testName){
+ if (JSON.stringify(actual) === JSON.stringify(expected)){
+	console.log("Passed")
+ }
+ else{
+	console.log("FAILED ["+ testName + "] Expected "+JSON.stringify(expected)+ ", but got " +JSON.stringify(actual))
+ }
+}
+
+assertObjectsEqual(actual, expected,"myTest")
+
+
+
+Problem 8: Parsing JSON objects and Compare:
+var securityQuestions = [
+ {
+ question: "What was your first pet's name?",
+ expectedAnswer: "FlufferNutter"
+ },
+ {
+ question: "What was the model year of your first car?",
+ expectedAnswer: "1985"
+ },
+ {
+ question: "What city were you born in?",
+ expectedAnswer: "NYC"
+ }
+]
+function chksecurityQuestions(securityQuestions,question, ans) {
+	for(let i=0; i<securityQuestions.length; i++){
+		if(securityQuestions[i].question === question){
+			if(securityQuestions[i].expectedAnswer === ans){
+				return true
+			}
+		}
+	}
+	return false;
+}
+//Test case1:
+var ques = "What was your first pet's name?";
+var ans  =  "FlufferNutter";
+var status = chksecurityQuestions(securityQuestions, ques, ans);
+console.log(status); // true
+//Test case2:
+var ques = "What was your first pet's name?";
+var ans  =  "DufferNutter";
+var status = chksecurityQuestions(securityQuestions, ques, ans);
+console.log(status); // flase
+
+
+Problem 9: Parsing JSON objects and Compare:
+
+var students = [
+ {
+ name: "Siddharth Abhimanyu", age: 21}, { name: "Malar", age: 25},
+ {name: "Maari",age: 18},{name: "Bhallala Deva",age: 17},
+ {name: "Baahubali",age: 16},{name: "AAK chandran",age: 23},   {name:"Gabbar Singh",age: 33},{name: "Mogambo",age: 53},
+ {name: "Munnabhai",age: 40},{name: "Sher Khan",age: 20},
+ {name: "Chulbul Pandey",age: 19},{name: "Anthony",age: 28},
+ {name: "Devdas",age: 56} 
+ ];
+function returnMinors(arr)
+{
+	characters = []
+	for(let i=0; i<arr.length;i++){
+		if(arr[i].age < 20){
+			characters.push(arr[i].name)
+		} 
+	}
+	return characters
+}
+console.log(returnMinors(students));

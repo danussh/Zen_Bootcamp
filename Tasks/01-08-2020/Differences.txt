@@ -1,0 +1,15 @@
+What is the difference between window, screen, and document in Javascript?
+
+Window: window is the execution context and global object for that context's JavaScript
+Well, the window is the first thing that gets loaded into the browser. 
+This window object has the majority of the properties like length, innerWidth, innerHeight, 
+name, if it has been closed, its parents, and more.
+
+
+Document: document contains the DOM, initialized by parsing HTML. The document actually gets 
+loaded inside the window object and has properties available to it like title, URL, cookie, etc.
+
+Screen: screen describes the physical display's full screenScreen is a small information object 
+about physical screen dimensions . It can be used to display screen width, height, colorDepth, 
+pixelDepth etc. It is not mandatory to write window prefix with screen object. It can be written without 
+window prefix.
