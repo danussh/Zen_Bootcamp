@@ -1,0 +1,46 @@
+//Print odd numbers in an array 
+
+let arr = [1, 2, 3, 4, 5]
+console.log(arr.filter((item)=>(item%2 !== 0
+
+
+//Convert all the strings to title caps in a string array
+
+let arr = ["one", "two", "three", "four", "five"]
+console.log(arr.map((item)=> (item[0].toUpperCase() + item.toLowerCase().slice(1))))
+
+// Sum of all numbers in an array
+
+let arr = [1, 2, 3, 4, 5]
+console.log(arr.reduce((sum, item)=>(sum + item), 0))
+
+//Return all the prime numbers in an array
+var isPrime = function(value){
+				if (value === 1 || value === 2 ){
+					return true
+				}
+				for(let i=2; i<=Math.ceil(Math.sqrt(value)); i++){
+					if(value%i === 0){
+						return false
+					}
+				}
+				return true
+			  }
+let arr = [1, 2, 3, 4, 5]
+console.log(arr.filter((item)=>(isPrime(item))))
+
+
+//Return all the palindromes in an array 
+var checkPalindrome = function(value){
+				reverseValue = ""
+				for(let i=value.length-1; i>=0; i--){
+					reverseValue += value[i]
+				}
+				return value === reverseValue
+			  }
+let arr = ["abc", "aba", "koushik", "malayalam", "test"]
+console.log(arr.filter((item)=>(checkPalindrome(item))))			  
+
+			  
+
+

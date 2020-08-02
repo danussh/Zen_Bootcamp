@@ -1,0 +1,496 @@
+JavaScript Functions — Warmup Problems
+
+Problem:
+Write a function called “addFive”.
+Given a number, “addFive” returns 5 added to that number.
+
+Solution:
+let num = 10
+function addFive(num){
+    return num + 5;
+}
+addFive(num)
+
+
+Problem:
+Write a function called “getOpposite”.
+Given a number, return its opposite.
+
+Solution
+var num = 5;
+function getOpposite(num) {
+	if(typeof(num) === "number"){
+		if(num === 0){
+			return 0;
+		}
+		else if(num%1 === 0){
+			return -1 * num
+		}
+	}
+	return -1;
+}
+var result = getOpposite(num)
+
+
+Problem:
+Fill in your code that takes an number minutes and converts it to seconds.
+
+Solution
+var min = 5;
+function toSeconds(min) {
+	return min*60
+}
+var secs = toSeconds(min)
+
+
+
+Problem
+Create a function that takes a string and returns it as an integer.
+
+Solution
+var mystr = "5";
+function toInteger(mystr) {
+	return +mystr
+}
+var myint = toInteger(mystr)
+
+
+Problem
+Create a function that takes a number as an argument, increments the number by +1 and returns the result.
+
+Solution
+var myint = 0;
+function nextNumber(myint) {
+	return myint + 1
+}
+var myNextint = nextNumber(myint)
+
+Problem
+Create a function that takes an array and returns the first element.
+
+Solution
+
+var arr = [1, 2, 3];
+function getFirstElement(arr) {
+	return arr[0]
+}
+var data = getFirstElement(arr)
+
+Problem
+Convert Hours into Seconds
+Write a function that converts hours into seconds.
+
+Solution
+var arr = [1, 2, 3];
+function hourToSeconds(arr) {
+	return arr.map((item)=>{
+    return item*60*60
+})
+}
+var data = hourToSeconds(arr)
+
+
+Problem
+Find the Perimeter of a Rectangle
+Create a function that takes height and width and finds the perimeter of a rectangle.
+
+Solution
+function findPerimeter(num1,num2) {
+	return ((num1 + num2) * 2)
+}
+var peri = findPerimeter(6,7)
+
+Problem
+Less Than 100?
+Given two numbers, return true if the sum of both numbers is less than 100. Otherwise return false.
+
+Solution
+function lessThan100(num1,num2) {
+	return (num1 + num2) < 100
+}
+var res = lessThan100(22,15)
+
+Problem
+There is a single operator in JavaScript, capable of providing the remainder of a division operation.
+Two numbers are passed as parameters. The first parameter divided by the second parameter will have a remainder, 
+possibly zero. Return that value.
+
+Solution
+function remainder(num1,num2) {
+	return num1%num2
+}
+var res = remainder(1,3)
+
+
+Problem
+Old macdonald had a farm:
+MacDonald is asking you to tell him how many legs can be counted among all his animals. The farmer breeds three species:
+turkey = 2 legs
+horse = 4 legs
+pigs = 4 legs
+The farmer has counted his animals and he gives you a subtotal for each species. You have to implement a function that returns
+the total number of legs of all the animals.
+
+Solution
+function CountAnimals(tur,horse,pigs) {
+	return ((tur*2) + (horse*4) + (pigs*4)) 
+}
+var legs = CountAnimals(2,3,5)
+
+
+Problem
+Frames Per Second
+Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.
+
+Solution
+function frames(num1,num2) {
+	return (num1*num2*60)
+}
+var fps = frames(1,2)
+
+
+Problem
+Check if an Integer is Divisible By Five
+Create a function that returns true if an integer is evenly divisible by 5, and false otherwise.
+
+Solution
+function divisibleByFive(num1) {
+	return num1%5 === 0
+}
+var divisible = divisibleByFive(5)
+
+
+Problem:
+Write a function called “isEven”.
+Given a number, “isEven” returns whether it is even.
+
+Solution
+function isEven(num){
+ return num%2 === 0
+}
+var even = isEven(5)
+
+
+Problem:
+Write a function called “areBothOdd”.
+Given 2 numbers, “areBothOdd” returns whether or not both of the given numbers are odd.
+
+Solution
+function areBothOdd(num1, num2){
+	return (num1%2 !== 0 && num2%2 !==0)
+}
+
+
+Problem:
+Write a function called “getFullName”.
+Given a first and a last name, “getFullName” returns a single string with the given first and last names separated by a single space.
+
+Solution
+function getFullName(firstName, lastName){
+	let res = ""
+	if(firstName !== undefined){
+		res += firstName + " "
+	}
+	if(lastName !== undefined){
+		res += lastName
+	}
+	return res.trim()
+}
+
+
+Problem:
+Write a function called “getLengthOfWord”.
+Given a word, “getLengthOfWord” returns the length of the given word.
+
+Solution
+function getLengthOfWord(word1){
+	if(typeof(word1) === "string"){
+		return word1.length
+	}
+	return -1
+}
+
+
+Problem:
+Write a function called “isSameLength”.
+Given two words, “isSameLength” returns whether the given words have the same length.
+
+Solution
+function isSameLength(word1, word2){
+	return (word1.length === word2.length)
+}
+
+Problem:
+Create a function to calculate the distance between two points defined by their x, y coordinates
+
+Solution
+
+console.log(getDistance(100, 100, 400, 300));
+function getDistance(x1, y1, x2, y2)
+{
+	let value1 = Math.pow(x2 - x1, 2)
+	let value2 = Math.pow(y2 - y1, 2)
+	return Math.sqrt(value1 + value2)
+}
+
+Problem:
+Write a function called “getNthElement”.
+Given an array and an integer, “getNthElement” returns the element at the given integer, within the given array. 
+If the array has a length of 0, it should return ‘undefined’.
+
+Solution
+function getNthElement(array,n){
+	if(array.length > 0){
+		return array[n]
+	}
+	return undefined
+	
+}
+
+
+Problem:
+Write a function called “getLastElement”.
+Given an array, “getLastElement” returns the last element of the given array. 
+If the given array has a length of 0, it should return ‘-1’.
+
+Solution
+function getLastElement(array){
+	if(array.length > 0){
+		return array[array.length - 1]
+	}
+	return -1
+}
+
+
+Problem:
+Write a function called “getProperty”.
+Given an object and a key, “getProperty” returns the value of the property at the given key. 
+If there is no property at the given key, it should return undefined.
+
+Solution
+var obj = {
+ mykey: "value"
+};
+function getProperty(obj, key) {
+	return obj[key]
+}
+
+
+Problem:
+Write a function called “addProperty”.
+Given an object and a key, “addProperty” adds a new property on the given object with a value of true.
+
+Solution
+var obj = {
+ mykey: "value"
+};
+function addProperty(obj, key){
+	obj[key] = true
+}
+
+
+Problem:
+Write a function called “removeProperty”.
+Given an object and a key, “removeProperty” removes the given key from the given object.
+
+Solution
+function removeProperty(obj, key){
+	delete obj.key
+}
+
+
+Problem:
+Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
+
+Solution
+var arr = [-5, 10, -3, 12, -9, 5, 90, 0, 1];
+var ar2 = function countPositivesSumNegatives(arr) {
+	let posSum = 0
+	let negSum = 0
+	for (let i of arr){
+		if(i > 0){
+			posSum += i
+		}
+		else{
+			negSum += i
+		}
+	}
+	return [posSum, negSum]
+}
+console.log(ar2(arr));
+
+
+Problem:
+Create a function that receives an array of numbers and returns an array containing only the positive numbers
+
+Solution
+function getPositives(ar)
+{
+	return ar.filter((item)=>(item>=0))
+}
+var ar = [-5, 10, -3, 12, -9, 5, 90, 0, 1];
+var ar2 = getPositives(ar);
+console.log(ar2);
+
+Problem:
+Write a function `powersOfTwo` which will return list of all powers of 2 from 0 to n (where n is an exponent).
+
+Solution
+function powersOfTwo(n){
+  res = []
+  for(let i=0; i<=n; i++){
+	res.push(Math.pow(2, i))
+  }
+  return res;
+}
+
+
+Problem:
+Find the maximum number in an array of numbers
+
+Solution
+
+function findMax(ar)
+{
+	let maxNum = ar[0]
+	for(let i=1; i<ar.length; i++){
+		if(ar[i] > maxNum){
+			maxNum = ar[i]
+		}
+	}
+	return maxNum
+}
+var ar = [-5, 10, -3, 12, -9, 5, 90, 0, 1];
+var max = findMax(ar);
+console.log("Max: ", max);
+
+
+Problem:
+Print the first 100 prime numbers
+
+Solution
+printPrimes(100);
+// Function prints the first nPrimes numbers
+function printPrimes(nPrimes)
+{
+ var n = 0;
+ var i = 2;
+ 
+ while(n < nPrimes)
+ {
+ if (isPrime(i))
+ {
+ console.log(n, " ? ", i);
+ n++;
+ }
+ 
+ i++;
+ }
+}
+// Returns true if a number is prime
+function isPrime(n)
+{
+	for(let i=2; i<= Math.ceil(Math.sqrt(n)); i++){
+		if(n%i === 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+
+Problem:
+Create a function that will return in an array the first “nPrimes” prime numbers greater than a particular number “startAt”
+
+Solution
+console.log(getPrimes(10, 100));
+function getPrimes(startInd, nPrimes)
+{
+ var n = 0;
+ var i = 2;
+ 
+ while(n < nPrimes)
+ {
+ if (isPrime(i))
+ {
+ if(n+1 > startInd){
+ console.log(n, " ? ", i);
+ }
+ n++;
+ }
+ 
+ i++;
+ }
+}
+// Returns true if a number is prime
+function isPrime(n)
+{
+	for(let i=2; i<= Math.ceil(Math.sqrt(n)); i++){
+		if(n%i === 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+
+Problem:
+Reverse a string
+
+Solution
+
+var s = reverseString("JavaScript");
+console.log(s);
+function reverseString(s)
+{
+   let res = ""
+   for(let i=s.length-1; i>=0; i--){
+		res += s[i]
+   }
+   return res
+}
+
+
+Problem:
+Create a function that will merge two arrays and return the result as a new array
+
+
+Solution
+var ar1 = [1, 2, 3];
+var ar2 = [4, 5, 6];
+var ar = mergeArrays(ar1, ar2);
+console.log(ar);
+function mergeArrays(ar1, ar2)
+{
+ var result = [];
+//this will add the first array to the result array
+for(let el of ar1)
+ {
+ result.push(el);
+ }
+ 
+ //Some piece of code goes here 
+ for(let el of ar2)
+ {
+ result.push(el);
+ }
+ 
+ return result;
+}
+
+
+Problem:
+Calculate the sum of numbers received in a comma delimited string
+
+Solution
+
+console.log(sumCSV("1.5, 2.3, 3.1, 4, 5.5, 6, 7, 8, 9, 10.9"));
+function sumCSV(s)
+{
+  let arr = s.split(", ")
+  arr = arr.map((item)=> (+item))
+  return arr.reduce((sum, item)=>(item+sum), 0)
+}
+
+
+

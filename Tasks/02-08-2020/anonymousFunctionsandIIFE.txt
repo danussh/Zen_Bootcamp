@@ -1,0 +1,293 @@
+// Print odd numbers in an array
+// Anonymous function
+
+var printOddNumbers = function(arr){
+						for(let i=0; i<arr.length; i++){
+							if(arr[i]%2 !== 0){
+								console.log(arr[i])
+							}
+						}
+					 }
+let arr = [1, 2, 3, 4, 5]
+printOddNumbers(arr)
+
+
+//IIFE
+let arr = [1, 2, 3, 4, 5]
+(function(arr){
+	for(let i=0; i<arr.length; i++){
+		if(arr[i]%2 !== 0){
+		console.log(arr[i])
+		}
+	}
+})(arr)
+
+
+//Convert all the strings to title caps in a string array
+// Anonymous function
+var  changeToTitleCaps = function(arr){
+						for(let i=0; i<arr.length; i++){
+							arr[i] = arr[i][0].toUpperCase() + arr[i].toLowerCase().slice(1);
+						}
+					 }
+let arr = ["one", "two", "three", "four", "five"]
+changeToTitleCaps(arr)
+console.log(arr)
+
+
+//IIFE
+let arr = ["one", "two", "three", "four", "five"]
+(function(arr){
+	for(let i=0; i<arr.length; i++){
+		arr[i] = arr[i][0].toUpperCase() + arr[i].toLowerCase().slice(1);
+	}
+})(arr)
+console.log(arr)
+
+// Sum all numbers in an array
+// Anonymous function
+
+var sumOfArray = function(arr){
+						let sum = 0
+						for(let i=0; i<arr.length; i++){
+							sum += arr[i]
+						}
+						return sum
+					 }
+let arr = [1, 2, 3, 4, 5]
+console.log(sumOfArray(arr))
+
+
+//IIFE
+let arr = [1, 2, 3, 4, 5]
+let sum = (function(arr){
+	let sum = 0;
+	for(let i=0; i<arr.length; i++){
+		sum += arr[i]
+	}
+	return sum
+})(arr)
+console.log(sum)
+
+
+//Return all prime numbers in an array
+// Anonymous function
+var isPrime = function(value){
+				if (value === 1 || value === 2 ){
+					return true
+				}
+				for(let i=2; i<=Math.ceil(Math.sqrt(value)); i++){
+					if(value%i === 0){
+						return false
+					}
+				}
+				return true
+			  }
+
+var returnPrimeNumbers = function(arr){
+						let primeArray = []
+						for(let i=0; i<arr.length; i++){
+							if(isPrime(arr[i])){
+								primeArray.push(arr[i])
+							}
+						}
+						return primeArray
+					 }
+let arr = [1, 2, 3, 4, 5]
+console.log(returnPrimeNumbers(arr))
+
+
+//IIFE
+let arr = [1, 2, 3, 4, 5]
+
+var isPrime = function(value){
+				if (value === 1 || value === 2 ){
+					return true
+				}
+				for(let i=2; i<=Math.ceil(Math.sqrt(value)); i++){
+					if(value%i === 0){
+						return false
+					}
+				}
+				return true
+			  }
+			  
+let primeArray = (function(arr){
+	let primeArray = []
+	for(let i=0; i<arr.length; i++){
+		if(isPrime(arr[i])){
+			primeArray.push(arr[i])
+		}
+	}
+	return primeArray
+})(arr)
+console.log(primeArray)
+
+
+//Return all the palindromes in an array
+// Anonymous function
+var checkPalindrome = function(value){
+				reverseValue = ""
+				for(let i=value.length-1; i>=0; i--){
+					reverseValue += value[i]
+				}
+				return value === reverseValue
+			  }
+
+var returnPalindrome = function(arr){
+						let palindromeArray = []
+						for(let i=0; i<arr.length; i++){
+							if(checkPalindrome(arr[i])){
+								palindromeArray.push(arr[i])
+							}
+						}
+						return palindromeArray
+					 }
+let arr = ["abc", "aba", "koushik", "malayalam", "test"]
+console.log(returnPalindrome(arr))
+
+
+//IIFE
+let arr = ["abc", "aba", "koushik", "malayalam", "test"]
+
+var checkPalindrome = function(value){
+				reverseValue = ""
+				for(let i=value.length-1; i>=0; i--){
+					reverseValue += value[i]
+				}
+				return value === reverseValue
+			  }
+			  
+let palindromeArray = (function(arr){
+	let palindromeArray = []
+	for(let i=0; i<arr.length; i++){
+		if(checkPalindrome(arr[i])){
+			palindromeArray.push(arr[i])
+		}
+	}
+	return palindromeArray
+})(arr)
+console.log(palindromeArray)
+
+
+//Return median of two sorted array of same size
+// Anonymous function
+
+
+var returnMedian = function(arr1, arr2){
+						let medians = []
+						if(arr1.length%2 === 0){
+							let mid =  arr1.length/2
+							medians.push((arr1[mid] + arr1[mid - 1])/2)
+							medians.push((arr2[mid] + arr2[mid - 1])/2)
+						}
+						else{
+							let mid =  Math.floor(arr1.length/2)
+							medians.push(arr1[mid])
+							medians.push(arr2[mid])
+						}
+						return medians
+					 }
+let arr1 = [1,2,3,4]
+let arr2 = [5,6,7,8]
+console.log(returnMedian(arr1, arr2))
+
+
+//IIFE
+let arr1 = [1,2,3,4]
+let arr2 = [5,6,7,8]
+let medians = (function(arr){
+				let medians = []
+				if(arr1.length%2 === 0){
+					let mid =  arr1.length/2
+					medians.push((arr1[mid] + arr1[mid - 1])/2)
+					medians.push((arr2[mid] + arr2[mid - 1])/2)
+				}
+				else{
+					let mid =  Math.floor(arr1.length/2)
+					medians.push(arr1[mid])
+					medians.push(arr2[mid])
+				}
+			return medians
+})(arr1, arr2)
+console.log(medians)
+
+
+// Remove duplicates from an array
+// Anonymous function
+var  removeDuplicates = function(arr){
+						let uniqueArray = []
+						for(let i=0; i<arr.length; i++){
+							isUnique = true;
+							for(let j = 0; j<arr.length; j++){
+								if(i !== j){
+									if(arr[i] === arr[j]){
+										isUnique = false;
+									}
+								}
+							}
+							if(isUnique){
+								uniqueArray.push(arr[i])
+							}
+						}
+						return uniqueArray
+					 }
+let arr = ["one", "two", "three", "four", "five", "one", "two"]
+console.log(removeDuplicates(arr))
+
+
+//IIFE
+let arr = ["one", "two", "three", "four", "five", "one", "two"]
+let uniqueArray = (function(arr){
+	let uniqueArray = []
+	for(let i=0; i<arr.length; i++){
+		isUnique = true;
+		for(let j = 0; j<arr.length; j++){
+			if(i !== j){
+				if(arr[i] === arr[j]){
+					isUnique = false;
+				}
+			}
+		}
+		if(isUnique){
+			uniqueArray.push(arr[i])
+		}
+	}
+	return uniqueArray
+})(arr)
+console.log(uniqueArray)
+
+
+// Rotate an array by k times and return the rotated array
+// Anonymous function
+var  rotateArray = function(arr, k){
+						let rotatedArray = []
+						for(let i=0; i<k; i++){
+							rotatedArray = []
+							rotatedArray[0] = arr[arr.length-1]
+							for(let j = 1; j<arr.length; j++){
+								rotatedArray[j] = arr[j-1]
+							}
+							arr = rotatedArray
+						}
+						return rotatedArray
+					 }
+let arr = ["one", "two", "three", "four", "five"]
+console.log(rotateArray(arr, 2))
+
+
+//IIFE
+let arr = ["one", "two", "three", "four", "five"]
+let rotatedArray = (function(arr, k){
+	let rotatedArray = []
+	for(let i=0; i<k; i++){
+		rotatedArray = []
+		rotatedArray[0] = arr[arr.length-1]
+		for(let j = 1; j<arr.length; j++){
+			rotatedArray[j] = arr[j-1]
+		}
+		arr = rotatedArray
+	}	
+	return rotatedArray
+})(arr, 2)
+console.log(rotatedArray)
