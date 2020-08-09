@@ -66,12 +66,20 @@ class LED extends TV{
 		this.viewingAngle = viewingAngle
 		this.backlight = backlight
 	}
-	printViewAngle(){
-		console.log(this.viewingAngle)
+	setViewAngle(angle){
+		if (angle >= 10 && angle <= 70){
+			this.viewingAngle = angle
+		    	return this.viewingAngle
+		}
+		return -1
 	}
 	
-	printBacklight(){
-		console.log(this.backlight)
+	setBacklight(backlight){
+		if (backlight >= 0 && backlight <= 100){
+			this.backlight = backlight
+		    	return this.backlight
+		}
+		return -1
 	}
 	
 	displayDetails(){
@@ -79,8 +87,10 @@ class LED extends TV{
 	}
 }
 led1 = new LED(12, 120, 3, 100, 40, "ON", "Panasonic", 100000, 15, "ON", 50, 60)
-led1.printViewAngle()
-led1.printBacklight()
+console.log(led1.setViewAngle(10))
+console.log(led1.setViewAngle(0))
+console.log(led1.setBacklight(40))
+console.log(led1.setBacklight(123))
 console.log(led1.displayDetails())
 
 
@@ -96,12 +106,20 @@ class Plasma extends TV{
 		this.backlight = backlight
 	}
 	
-	printViewAngle(){
-		console.log(this.viewingAngle)
+	setViewAngle(angle){
+		if (angle >= 10 && angle <= 70){
+			this.viewingAngle = angle
+		    	return this.viewingAngle
+		}
+		return -1
 	}
 	
-	printBacklight(){
-		console.log(this.backlight)
+	setBacklight(backlight){
+		if (backlight >= 0 && backlight <= 100){
+			this.backlight = backlight
+		    	return this.backlight
+		}
+		return -1
 	}
 	
 	displayDetails(){
@@ -110,6 +128,8 @@ class Plasma extends TV{
 }
 
 plasma1 = new Plasma(12, 120, 3, 100, 40, "ON", "Panasonic", 100000, 15, "ON", 50, 60)
-plasma1.printViewAngle()
-plasma1.printBacklight()
+console.log(plasma1.setViewAngle(10))
+console.log(plasma1.setViewAngle(0))
+console.log(plasma1.setBacklight(40))
+console.log(plasma1.setBacklight(123))
 console.log(plasma1.displayDetails())
