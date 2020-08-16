@@ -1,0 +1,289 @@
+<html>
+
+<head>
+    <title>
+        Resume
+    </title>
+    <style>
+        .box-class {
+            margin: 0px 150px;
+        }
+
+        .block-class2 {
+            background-color: rgb(85, 81, 81);
+            height: 200px;
+        }
+
+        .block-class1 {
+            background-color: #eeeeee;
+            height: 50px;
+        }
+
+        .block-class3 {
+            background-color: rgb(85, 81, 81);
+            height: 50px;
+        }
+
+        .column {
+            float: left;
+            width: 48%;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        img {
+            border-radius: 50%;
+            border-style: dotted;
+            border-width: 5px;  
+            border-color: orange;  
+   
+        }
+        .absolute{
+            position: absolute;
+            left: 575px; 
+        }
+
+        .v1 {
+            border-left: 2px solid rgb(85, 81, 81);
+            height: 900px;
+            position: absolute;
+            left: 50%;
+            margin-left: -3px;
+            top: 350px;
+        }
+        .name-box{
+            position: absolute;
+            background-color:orange;
+            top: 200px;
+            height: 40px;
+            width: 300px;
+            left: 530px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            padding-top: 10px;
+        }
+        .display_block{
+            display: inline;
+        }
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-class">
+        <div class="block-class2"> 
+            <img class="absolute" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:200px">
+        </div>
+        <div class="block-class1"> </div>
+        <div class="name-box">BRAIN DUDEY</div>
+        <div class="block-class3"> </div>
+        <div style="text-align: center;padding-top: 5px;">
+            N.Damen Avenue, Chicago 999999 | 99-999-99999 | hello@kickresume.com | www.kickresume.com
+        </div>
+        <hr>
+        <div class="v1"></div>
+        <div class="row">
+            <div class="column">
+                <img class="display_block"src="https://cdn2.iconfinder.com/data/icons/people-80/96/Picture1-512.png" alt="Avatar" style="width:30px">
+                <h2 class="display_block">Profile</h2>
+                <p>Innovative optimized solution seeker. Excited to be at the deployment phase of my new career as a web
+                    developer. I am ambitious, adventurous, assiduous, animated, and an alliteration advocate.</p>
+                <img class="display_block"src="data:image/png;base64,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" alt="Avatar" style="width:30px">
+                <h2 class="display_block">Skills</h2>
+                <h2 style="text-align: center;"> Technical Skills</h2>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            JavaScripts
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            HTML
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            CSS
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            React
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Redux
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="3" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            MongoDB
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="3" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Deployment
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+
+                    </tr>
+                </table>
+                <h2 style="text-align: center;"> Additional Skills</h2>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            Project Management
+                        </td>
+                        <td>
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Recruitment
+                        </td>
+                        <td>
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Business Development
+                        </td>
+                        <td>
+                            <input type="range" value="5" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Editing
+                        </td>
+                        <td>
+                            <input type="range" value="4" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Fundraising
+                        </td>
+                        <td>
+                            <input type="range" value="5" min="0" max="5" fixed>
+                        </td>
+                    </tr>
+
+                </table>
+                <img class="display_block"src="https://static.thenounproject.com/png/2525347-200.png" alt="Avatar" style="width:30px">
+                <h2 class="display_block">Work experience</h2>
+                <table width="100%">
+                    <tr>
+                        <td>Event Manager</td>
+                        <td style="text-align: right;">03/2014 - 04/2017</td>
+                    </tr>
+                </table>
+                <p>C3 presents, Washington DC</p>
+                <ul>
+                    <li>Lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation.</li>
+                    <li>Brought new business to the organization through relentless networking and stewardship which helped the company win the bid for the State Department Summit on the Middle East and, the companies largest civic event to date, the United State of Women.</li>
+                    <li>Building relationships with key media players.</li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <img class="display_block"src="https://static.thenounproject.com/png/2525347-200.png" alt="Avatar" style="width:30px">
+                <h2 class="display_block">Work experience</h2>
+                <table width="100%">
+                    <tr>
+                        <td>Community Relations Manager</td>
+                        <td style="text-align: right;">06/2011 - 01/2014</td>
+                    </tr>
+                </table>
+                <p>Elder Housing, Los Angeles</p>
+                <ul>
+                        <li>Arranging presentations and pitch deck.</li>
+                        <li>Designing a PR plan and establishing important focus points.</li>
+                        <li>Designing, creating and managing content across multiple communication platforms.</li>
+                        <li>Building relationships with key media players.</li>
+                        <li>Brought new business to the organization through relentless networking and stewardship which helped the company win the bid for the State Department Summit on the Middle East and, the companies largest civic event to date, the United State of Women.</li>
+                        <li>Exercise fiscal control over budget creation, tracking and reporting. Collaborate with employees at all organizational levels to advance cohesive operations.</li>
+                </ul>
+                <img class="display_block"src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Education%2C_Studying%2C_University%2C_Alumni_-_icon.png" alt="Avatar" style="width:30px">
+                <h2 class="display_block">Education</h2>
+                <table width="100%">
+                    <tr>
+                        <td>Engineering Immersion Program</td>
+                        <td style="text-align: right;">11/2019 - 06/2019</td>
+                    </tr>
+                </table>
+                <p>Thinkful, Chicago, IL</p>
+                <p>Project-focused intensive program with emphasis on Mongo, Express, React, and JavaScript (MERN) technical stack.</p>
+                <ul>
+                    <li>Developed a full-stack web application, using React that allows users to explore various aspects of meditation. User's progress is stored on a backend created using Node and MongoDB.</li>
+                    <li>Developed a language learning app, Foodie Phonetics using spaced repetition and a linked list data structure. React was used to create the front end components while Node and Mongo were used to create a backend that stores user data.</li>
+                    <li>Developed a concierge app, for individuals looking for curated suggestions when visiting a new place. React was used to develop the front end which includes real-time chat, drag and drop and variety of advanced features. The backend, built using Node, Express, and Mongo, takes advantage of well-developed RESTful API, Geospatial searching, and user authentication with JWT.</li>
+                    <li>Building relationships with key media players.</li>
+                </ul>
+                <table width="100%">
+                    <tr>
+                        <td>BA English</td>
+                        <td style="text-align: right;">09/2001 - 09/2005</td>
+                    </tr>
+                </table>
+                <p>University of California, Los Angeles</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
