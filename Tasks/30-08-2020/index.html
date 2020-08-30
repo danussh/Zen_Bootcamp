@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Claculator
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: sans-serif;
+                background-color: rgb(49, 5, 90);
+            }
+            .buttonAll{
+                width: 25%;
+            }
+            .buttonC{
+                width: 50%;
+            }
+             .period{
+                 font-size: 10px;
+             }
+
+        </style>
+    </head>
+    <body>  
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>      
+        <script>
+            // Main div block
+            var mainDiv = document.createElement("div")
+            mainDiv.setAttribute("class","container")
+            document.body.appendChild(mainDiv)
+
+            // Creating row and col
+            var row = document.createElement("div")
+            row.setAttribute("class", "row")
+            row.setAttribute("style", "margin-top:10%")
+            mainDiv.appendChild(row)
+
+            var col1 = document.createElement("div")
+            col1.setAttribute("class", "col-sm-12 col-md-4")
+            row.appendChild(col1)
+
+            var col2 = document.createElement("div")
+            col2.setAttribute("class", "col-sm-12 col-md-4")
+            row.appendChild(col2)
+
+            // Calculator screen
+            var screen = document.createElement("input")
+            screen.setAttribute("type","text")
+            screen.setAttribute("class"," form-control")
+            screen.setAttribute("name","screen")
+            screen.setAttribute("id", "screen")
+            screen.setAttribute("value","")
+            screen.disabled = true
+            col2.appendChild(screen)
+
+            // Creating elements for button
+            col2.appendChild(createButtonElements("C", "clearScreen()", "buttonAll"))
+            var backSpacebutton = document.createElement("button")
+            backSpacebutton.setAttribute("class", "buttonAll")
+            backSpacebutton.setAttribute("onclick", "removeLastCharacter()")
+            backSpacebutton.innerHTML = "<i class='fas fa-backspace'></i>"
+            col2.appendChild(backSpacebutton)
+            col2.appendChild(createButtonElements("X", "createEvalString('*')", "buttonAll"))
+            col2.appendChild(createButtonElements("/", "createEvalString('/')", "buttonAll"))
+            col2.appendChild(createButtonElements("7", "createEvalString('7')", "buttonAll"))
+            col2.appendChild(createButtonElements("8", "createEvalString('8')", "buttonAll"))
+            col2.appendChild(createButtonElements("9", "createEvalString('9')", "buttonAll"))
+            col2.appendChild(createButtonElements("-", "createEvalString('-')", "buttonAll"))
+            col2.appendChild(createButtonElements("4", "createEvalString('4')", "buttonAll"))
+            col2.appendChild(createButtonElements("5", "createEvalString('5')", "buttonAll"))
+            col2.appendChild(createButtonElements("6", "createEvalString('6')", "buttonAll"))
+            col2.appendChild(createButtonElements("+", "createEvalString('+')", "buttonAll"))
+            col2.appendChild(createButtonElements("3", "createEvalString('3')", "buttonAll"))
+            col2.appendChild(createButtonElements("2", "createEvalString('2')", "buttonAll"))
+            col2.appendChild(createButtonElements("1", "createEvalString('1')", "buttonAll"))
+            col2.appendChild(createButtonElements("=", "evaluationOfExpression()", "buttonAll"))
+            col2.appendChild(createButtonElements("00", "createEvalString('00')", "buttonAll"))
+            col2.appendChild(createButtonElements("0", "createEvalString('0')", "buttonAll"))            
+            col2.appendChild(createButtonElements(".", "createEvalString('.')", "buttonAll"))
+            col2.appendChild(createButtonElements("%", "createEvalString('%')", "buttonAll"))
+           
+
+            //function for creating button elements
+            function createButtonElements(value, func, clas){
+                var buttonElement = document.createElement("button")
+                buttonElement.setAttribute("class", clas)
+                buttonElement.setAttribute("onclick", func)
+                buttonElement.innerText = value
+                return buttonElement
+            }
+
+            // function for creating the evaluation expression
+            function createEvalString(value){
+					document.getElementById("screen").value += value 
+            }
+
+            //function for evaluating the expression
+            function evaluationOfExpression(){
+                try{
+					document.getElementById("screen").value = eval(document.getElementById("screen").value)
+				}
+				catch(error){
+					document.getElementById("screen").value = "Invalid operations performed"
+				}
+            }
+
+            // function for clearing the screen
+            function clearScreen(){
+                document.getElementById("screen").value = ""
+            }
+
+            //function to remove last character from the evaluation expression
+            function removeLastCharacter(){
+                document.getElementById("screen").value = document.getElementById("screen").value.slice(0, document.getElementById("screen").value.length -1)
+            }
+            // Functionality to take input from keyboard
+            document.onkeypress = function (event){
+                if (event.keyCode >= 48 && event.key <= 57){
+                    createEvalString(event.key)
+                }
+                else if (event.keyCode === 42 || event.keyCode === 47 || event.keyCode === 45 || event.keyCode === 46 || event.keyCode === 43 || event.keyCode === 37){
+                    createEvalString(event.key)
+                }
+                else if (event.keyCode === 42){
+                    removeLastCharacter()
+                }
+                else if (event.keyCode === 61 || event.keyCode === 13){
+                    evaluationOfExpression()
+                }
+            }
+			document.onkeydown = function (event){
+				if (event.keyCode === 8){
+                    removeLastCharacter()
+                }
+			}
+        </script>
+        
+    </body>
+</html>
