@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Pagination
+        </title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <script>
+            let mainDiv = document.createElement("div")
+            mainDiv.setAttribute("class", "container mt-5")
+            document.body.appendChild(mainDiv)
+
+            let mainTable = document.createElement("table")
+            mainTable.setAttribute("class", "table table-dark")
+            mainTable.setAttribute("id", "main-table")
+            mainDiv.appendChild(mainTable)
+
+            let thead1 = document.createElement("thead") 
+            mainTable.appendChild(thead1)
+
+            let tr1 = document.createElement("tr")
+            thead1.appendChild(tr1)
+
+            let th1 = document.createElement("th")
+            th1.setAttribute("class", "text-center")
+            th1.innerText = "Id"
+            tr1.appendChild(th1)
+
+            let secondDiv = document.createElement("div")
+            secondDiv.setAttribute("class", "d-flex justify-content-center")
+            mainDiv.appendChild(secondDiv)
+
+            let navBar = document.createElement("nav")
+            navBar.setAttribute("aria-label", "Page navigation exapmle")
+            secondDiv.appendChild(navBar)
+
+            function buildNavBar(){
+                let ul1 = document.createElement("ul")
+                ul1.setAttribute("class", "pagination")
+                navBar.appendChild(ul1)
+
+                let lif = document.createElement("li")
+                lif.setAttribute("class", "page-item")
+                ul1.appendChild(lif)
+
+                let af =  document.createElement("a")
+                af.setAttribute("class", "page-link")
+                af.setAttribute("href", "#")
+                af.setAttribute("aria-label", "Previous")
+                af.setAttribute("onclick", "onPrevious()")
+                lif.appendChild(af)
+
+                let spanf1 = document.createElement("span")
+                spanf1.setAttribute("aria-hidden", "true")
+                spanf1.innerHTML = "&laquo;"
+                af.appendChild(spanf1)
+
+                let spanf2 = document.createElement("span")
+                spanf2.setAttribute("class", "sr-only")
+                spanf2.innerText = "Previous;"
+                af.appendChild(spanf2)
+
+                let pageData = pagination(state.dataset, state.page, state.rows)
+                let pages = pageData.pages
+
+                let count = 1
+                while (count <= pages){
+                    let lic = document.createElement("li")
+                    lic.setAttribute("class", "page-item")
+                    ul1.appendChild(lic)
+
+                    let ac =  document.createElement("a")
+                    ac.setAttribute("class", "page-link")
+                    ac.setAttribute("id", count)
+                    ac.setAttribute("onclick", "onPaginationClick(this.id)")
+                    ac.setAttribute("href", "#")
+                    ac.innerText = count
+                    lic.appendChild(ac)
+                    count ++
+                }
+
+                let lil = document.createElement("li")
+                lil.setAttribute("class", "page-item")
+                ul1.appendChild(lil)
+
+
+                let al =  document.createElement("a")
+                al.setAttribute("class", "page-link")
+                al.setAttribute("href", "#")
+                al.setAttribute("aria-label", "Next")
+                al.setAttribute("onclick", "onNext()")
+                lil.appendChild(al)
+
+                let spanl1 = document.createElement("span")
+                spanl1.setAttribute("aria-hidden", "true")
+                spanl1.innerHTML = "&raquo;"
+                al.appendChild(spanl1)
+
+                let spanl2 = document.createElement("span")
+                spanl2.setAttribute("class", "sr-only")
+                spanl2.innerText = "Next"
+                al.appendChild(spanl2)
+
+            }
+            buildNavBar()
+            function buildTable(){
+                let tbody1 = document.createElement("tbody")
+                tbody1.setAttribute("id", "table-body")
+                mainTable.appendChild(tbody1)
+                let data = pagination(state.dataset, state.page, state.rows)
+                let currentData = data.dataset
+                for (var i in currentData){
+                    let tri = document.createElement("tr")
+                    tbody1.appendChild(tri)
+                    let td1 = document.createElement("td")
+                    td1.innerText = currentData[i].id
+                    tri.appendChild(td1)
+                }
+            }
+            buildTable()
+
+        </script>
+    </body>
+</html>
