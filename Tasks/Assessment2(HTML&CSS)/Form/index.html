@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Submission Form
+        </title>
+        <style>
+            #mainDiv{
+                background-color: rgb(155, 151, 151);
+                margin-top: 10%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            tr{
+                margin: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 10px;
+            }
+            
+            .input-container {
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+            }
+            .input-field {
+                 width: 100%;
+                 padding: 10px;
+                 outline: none;
+            }
+            .input-field:focus {
+            border: 2px solid dodgerblue;
+            }
+
+            i{
+            padding: 10px;
+            background: rgb(32, 35, 37);
+            color: white;
+            min-width: 50px;
+            text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form action="#" onsubmit="onSubmit()">
+                <div id="mainDiv">
+                <table width="100%">
+                    <tr class="row-class" >
+                        <td width = "50%" style="padding-left: 10px;">
+                            <label for="fname">Full Name</label>
+                        </td>
+                        <td style="padding-top: 20px; padding-right: 10px;">
+                            <div class="input-container">
+                                <i class="fas fa-user-alt"></i>
+                                <input type="text" class="input-field" id="fname" name="fname" placeholder="Full Name" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td style="padding-left: 10px;">
+                            <label for="address1">Address Line 1</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            <div class="input-container">
+                                <i class="far fa-address-book"></i>
+                                <input type="text" class="input-field" id="address1" name="address1" placeholder="Address Line 1" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td style="padding-left: 10px;">
+                            <label for="address2">Address Line 2</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            <div class="input-container">
+                                <i class="far fa-address-book"></i>
+                                <input type="text" class="input-field" id="address2" name="address2" placeholder="Address Line 2" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td style="padding-left: 10px;">
+                            <label for="city">City</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            
+                            <div class="input-container">
+                                <i class="far fa-building"></i>
+                                <input type="text" class="input-field" id="city" name="city" placeholder="City" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px;">
+                            <label for="state">State/Provenence/Region</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            
+                            <div class="input-container">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" class="input-field" id="state" name="state" placeholder="State/Provenence/Region" required>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px;">
+                            <label for="postalCode">Postal Code/Zip</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            
+                            <div class="input-container">
+                                <i class="far fa-envelope-open"></i>
+                                <input type="number" class="input-field" id="postalCode" name="postalCode" placeholder="Postal Code/Zip" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px;">
+                            <label for="country">Country</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            
+                            <div class="input-container">
+                                <i class="far fa-map"></i>
+                                <select class="input-field" id="country" name="country" required>
+                                    <option VALUE="" >-- Please Select --</option>
+                                    <option VALUE="AF" >Afganistan</option>
+                                    <option VALUE="AR" >Argentina</option>
+                                    <option VALUE="AU" >Australia</option>
+                                    <option VALUE="AT" >Austria</option>
+                                    <option VALUE="BH" >Bahrain</option>
+                                    <option VALUE="BD" >Bangladesh</option>
+                                    <option VALUE="BB" >Barbados</option>
+                                    <option VALUE="BY" >Belarus</option>
+                                    <option VALUE="BE" >Belgium</option>
+                                    <option VALUE="BM" >Bermuda</option>
+                                    <option VALUE="BT" >Bhutan</option>
+                                    <option VALUE="BW" >Botswana</option>
+                                    <option VALUE="BR" >Brazil</option>
+                                    <option VALUE="BN" >Brunei Darussalam</option>
+                                    <option VALUE="BG" >Bulgaria</option>
+                                    <option VALUE="KH" >Cambodia</option>
+                                    <option VALUE="CA" >Canada</option>
+                                    <option VALUE="CV" >Cape Verde</option>
+                                    <option VALUE="KY" >Cayman Islands</option>
+                                    <option VALUE="CN" >China</option>
+                                    <option VALUE="CU" >Cuba</option>
+                                    <option VALUE="CY" >Cyprus</option>
+                                    <option VALUE="DK" >Denmark</option>
+                                    <option VALUE="EG" >Egypt</option>
+                                    <option VALUE="SV" >El Salvador</option>
+                                    <option VALUE="ER" >Eritrea</option>
+                                    <option VALUE="EE" >Estonia</option>
+                                    <option VALUE="ET" >Ethiopia</option>
+                                    <option VALUE="FJ" >Fiji</option>
+                                    <option VALUE="FI" >Finland</option>
+                                    <option VALUE="FR" >France</option>
+                                    <option VALUE="GE" >Georgia</option>
+                                    <option VALUE="DE" >Germany</option>
+                                    <option VALUE="GH" >Ghana</option>
+                                    <option VALUE="GR" >Greece</option>
+                                    <option VALUE="GY" >Guyana</option>
+                                    <option VALUE="HK" >Hong Kong</option>
+                                    <option VALUE="HU" >Hungary</option>
+                                    <option VALUE="IS" >Iceland</option>
+                                    <option VALUE="IN" >India</option>
+                                    <option VALUE="ID" >Indonesia</option>
+                                    <option VALUE="IR" >Iran, Islamic Republic of</option>
+                                    <option VALUE="IQ" >Iraq</option>
+                                    <option VALUE="IE" >Ireland</option>
+                                    <option VALUE="IL" >Israel</option>
+                                    <option VALUE="IT" >Italy</option>
+                                    <option VALUE="JP" >Japan</option>
+                                    <option VALUE="JO" >Jordan</option>
+                                    <option VALUE="KE" >Kenya</option>
+                                    <option VALUE="KP" >Korea, Democratic People's Republic of</option>
+                                    <option VALUE="KR" >Korea, Republic of</option>
+                                    <option VALUE="KW" >Kuwait</option>
+                                    <option VALUE="LV" >Latvia</option>
+                                    <option VALUE="LU" >Luxembourg</option>
+                                    <option VALUE="MO" >Macao</option>
+                                    <option VALUE="MW" >Malawi</option>
+                                    <option VALUE="MY" >Malaysia</option>
+                                    <option VALUE="MV" >Maldives</option>
+                                    <option VALUE="MU" >Mauritius</option>
+                                    <option VALUE="MX" >Mexico</option>
+                                    <option VALUE="MN" >Mongolia</option>
+                                    <option VALUE="MA" >Morocco</option>
+                                    <option VALUE="NA" >Namibia</option>
+                                    <option VALUE="NR" >Nauru</option>
+                                    <option VALUE="NP" >Nepal</option>
+                                    <option VALUE="NL" >Netherlands</option>
+                                    <option VALUE="NZ" >New Zealand</option>
+                                    <option VALUE="NE" >Niger</option>
+                                    <option VALUE="NG" >Nigeria</option>
+                                    <option VALUE="NO" >Norway</option>
+                                    <option VALUE="OM" >Oman</option>
+                                    <option VALUE="PK" >Pakistan</option>
+                                    <option VALUE="PA" >Panama</option>
+                                    <option VALUE="PG" >Papua New Guinea</option>
+                                    <option VALUE="PH" >Philippines</option>
+                                    <option VALUE="PL" >Poland</option>
+                                    <option VALUE="PT" >Portugal</option>
+                                    <option VALUE="QA" >Qatar</option>
+                                    <option VALUE="RO" >Romania</option>
+                                    <option VALUE="RU" >Russian Federation</option>
+                                    <option VALUE="RW" >Rwanda</option>
+                                    <option VALUE="WS" >Samoa</option>
+                                    <option VALUE="SA" >Saudi Arabia</option>
+                                    <option VALUE="SN" >Senegal</option>
+                                    <option VALUE="SG" >Singapore</option>
+                                    <option VALUE="ZA" >South Africa</option>
+                                    <option VALUE="ES" >Spain</option>
+                                    <option VALUE="LK" >Sri Lanka</option>
+                                    <option VALUE="SD" >Sudan</option>
+                                    <option VALUE="SE" >Sweden</option>
+                                    <option VALUE="CH" >Switzerland</option>
+                                    <option VALUE="TW" >Taiwan, Province of China</option>
+                                    <option VALUE="TZ" >Tanzania, United Republic of</option>
+                                    <option VALUE="TH" >Thailand</option>
+                                    <option VALUE="TN" >Tunisia</option>
+                                    <option VALUE="TR" >Turkey</option>
+                                    <option VALUE="UG" >Uganda</option>
+                                    <option VALUE="UA" >Ukraine</option>
+                                    <option VALUE="AE" >United Arab Emirates</option>
+                                    <option VALUE="GB" >United Kingdom</option>
+                                    <option VALUE="US" >United States of America</option>
+                                    <option VALUE="UY" >Uruguay</option>
+                                    <option VALUE="VN" >Viet Nam</option>
+                                    <option VALUE="YE" >Yemen</option>
+                                    <option VALUE="ZR" >Zair</option>
+                                    <option VALUE="ZM" >Zambia</option>
+                                    <option VALUE="ZW" >Zimbabwe</option>                                              
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px;">
+                            <label for="emal">Email</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            
+                            <div class="input-container">
+                                <i class="fas fa-user-alt"></i>
+                                <input type="email" class="input-field" id="emal" name="emal" placeholder="Email" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px;">
+                            <label for="phoneNumber">Phone Number</label>
+                        </td>
+                        <td style="padding-right: 10px;">
+                            <div class="input-container">
+                                <i class="fas fa-user-alt"></i>
+                                <input type="number" class="input-field" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div style="text-align: center;">
+                        <input type="submit" value="Submit">
+                </div>
+            </div> 
+            </form>
+        </div>
+        
+    </body>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script> 
+    <script>
+        function onSubmit() {
+            alert("Thank you");
+        }
+    </script>
+</html>
