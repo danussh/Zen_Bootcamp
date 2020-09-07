@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .header{
+                background-color: black;
+                color: white;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: larger;
+                height: 70px;
+                text-align: center;
+            }
+
+            .text{
+                color: white;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: larger;
+            }
+
+            .body{
+                background-image: linear-gradient(to right, rgb(235, 192, 63) , rgb(66, 60, 42));
+            }
+
+            .backgound{
+                background-color: rgb(58, 71, 61);
+            }
+        </style>
+    </head>
+    <body>
+        <script src="script.js" async></script>
+        <script>
+            let mainDiv = document.createElement("div")
+            mainDiv.setAttribute("class", "container backgound")
+            document.body.appendChild(mainDiv)
+
+            let row = document.createElement("div")
+            row.setAttribute("class", "row mt-5 justify-content-around")
+            mainDiv.appendChild(row)
+
+            let modal1 = document.createElement("div")
+            modal1.setAttribute("class", "modal fade")
+            modal1.setAttribute("id", "weatherModal")
+            modal1.setAttribute("tabIndex", "-1")
+            modal1.setAttribute("role", "dialog")
+            modal1.setAttribute("aria-labelledby", "weatherModalTitle")
+            modal1.setAttribute("aria-hidden", "true")
+            document.body.appendChild(modal1)
+
+            let modal2 = document.createElement("div")
+            modal2.setAttribute("class", "modal-dialog modal-dialog-centered")
+            modal2.setAttribute("role", "document")
+            modal1.appendChild(modal2)
+
+            let modalContent = document.createElement("div")
+            modalContent.setAttribute("class", "modal-content")
+            modal2.appendChild(modalContent)
+
+            let modalHeader = document.createElement("div")
+            modalHeader.setAttribute("class", "modal-header")
+            modalContent.appendChild(modalHeader)
+
+            let modalTitle = document.createElement("h5")
+            modalTitle.setAttribute("class", "modal-title")
+            modalTitle.setAttribute("id", "weatherModalLongTitle")
+            modalTitle.innerText = "Weather Details "
+            modalHeader.appendChild(modalTitle)
+
+            let modalButton = document.createElement("button")
+            modalButton.setAttribute("type", "button")  
+            modalButton.setAttribute("class", "close")
+            modalButton.setAttribute("data-dismiss", "modal")
+            modalButton.setAttribute("aria-label", "Close")
+            modalHeader.appendChild(modalButton)
+
+            let modalSpan = document.createElement("span")
+            modalButton.setAttribute("aria-hidden", "true")
+            modalSpan.innerHTML = "&times;"
+            modalButton.appendChild(modalSpan)
+
+            let modalBody = document.createElement("div")
+            modalBody.setAttribute("class", "modal-body")
+            modalContent.appendChild(modalBody)
+
+            let table1 = document.createElement("table")
+            table1.setAttribute("class", "table table-hover table-dark")
+            modalBody.appendChild(table1)
+
+            let tr1 = document.createElement("tr")
+            table1.appendChild(tr1)
+
+            let td1 = document.createElement("td")
+            td1.innerHTML = "Weather"
+            tr1.appendChild(td1)
+
+            let td2 = document.createElement("td")
+            td2.setAttribute("id", "weatherVal")
+            td2.innerHTML = ""
+            tr1.appendChild(td2)
+
+            let tr2 = document.createElement("tr")
+            table1.appendChild(tr2)
+            let td3 = document.createElement("td")
+            td3.innerHTML = "Temperature"
+            tr2.appendChild(td3)
+
+            let td4 = document.createElement("td")
+            td4.setAttribute("id", "tempratureVal")
+            td4.innerHTML = ""
+            tr2.appendChild(td4)
+
+            let tr3 = document.createElement("tr")
+            table1.appendChild(tr3)
+
+            let td5 = document.createElement("td")
+            td5.innerHTML = "Feel Like Temperature"
+            tr3.appendChild(td5)
+
+            let td6 = document.createElement("td")
+            td6.setAttribute("id", "temperatureFeelLikeVal")
+            td6.innerHTML = ""
+            tr3.appendChild(td6)
+
+            let tr4 = document.createElement("tr")
+            table1.appendChild(tr4)
+
+            let td7 = document.createElement("td")
+            td7.innerHTML = "Pressure"
+            tr4.appendChild(td7)
+
+            let td8 = document.createElement("td")
+            td8.setAttribute("id", "pressureVal")
+            td8.innerHTML = ""
+            tr4.appendChild(td8)
+
+            let tr5 = document.createElement("tr")
+            table1.appendChild(tr5)
+
+            let td9 = document.createElement("td")
+            td9.innerHTML = "Humidity"
+            tr5.appendChild(td9)
+
+            let td10 = document.createElement("td")
+            td10.setAttribute("id", "humidityVal")
+            td10.innerHTML = ""
+            tr5.appendChild(td10)
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
