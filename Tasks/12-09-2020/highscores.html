@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        
+    </body>
+    <script src="script.js"></script>
+    <script>
+        document.body.setAttribute("class", "background")
+        let mainDiv = document.createElement("div")
+        mainDiv.setAttribute("class", "container")
+        document.body.appendChild(mainDiv)
+
+        let rowDiv = document.createElement("div")
+        rowDiv.setAttribute("class", "row")
+        mainDiv.appendChild(rowDiv)
+
+        let colDiv1 = document.createElement("div")
+        colDiv1.setAttribute("class", "col-sm-12 col-md-3")
+        rowDiv.appendChild(colDiv1)
+
+        let colDiv2 = document.createElement("div")
+        colDiv2.setAttribute("class", "col-sm-12 col-md-6")
+        rowDiv.appendChild(colDiv2)
+
+        let heading = document.createElement("h1")
+        heading.setAttribute("class", "text-center heading")
+        heading.innerText = "High Scores"
+        colDiv2.appendChild(heading)
+
+        let scoresDiv = document.createElement("div")
+        scoresDiv.setAttribute("class", "text-center high-scores")
+        colDiv2.appendChild(scoresDiv)
+
+        createScores()
+
+        let buttonDiv = document.createElement("div")
+        buttonDiv.setAttribute("class", "d-flex justify-content-center")
+        colDiv2.appendChild(buttonDiv)
+
+        let scoresButton = document.createElement("button")
+        scoresButton.setAttribute("class", "btn btn-primary btn-lg bg-color")
+        scoresButton.setAttribute("id", "goHome")
+        scoresButton.innerText = "Go Home"
+        scoresButton.setAttribute("onClick", "onHome()")
+        buttonDiv.appendChild(scoresButton)
+
+        function createScores(){
+            highScores = getHighScores()
+            console.log(highScores)
+            highScores.sort(function(a, b){return b.score - a.score});
+            for(let i=0; i<highScores.length; i++){
+                let heading2 = document.createElement("h3")
+                heading2.innerText = highScores[i].userName + ": " + highScores[i].score
+                scoresDiv.appendChild(heading2)
+            }
+        }
+
+        function onHome(){
+            window.open("index.html", "_self")
+        }
+
+    </script>
+</html>

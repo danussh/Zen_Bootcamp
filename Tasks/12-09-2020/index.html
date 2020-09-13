@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        
+    </body>
+    <script src="script.js"></script>
+    <script>
+        document.body.setAttribute("class", "background")
+        let mainDiv = document.createElement("div")
+        mainDiv.setAttribute("class", "container")
+        document.body.appendChild(mainDiv)
+
+        let rowDiv = document.createElement("div")
+        rowDiv.setAttribute("class", "row")
+        mainDiv.appendChild(rowDiv)
+
+        let colDiv1 = document.createElement("div")
+        colDiv1.setAttribute("class", "col-sm-12 col-md-3")
+        rowDiv.appendChild(colDiv1)
+
+        let colDiv2 = document.createElement("div")
+        colDiv2.setAttribute("class", "col-sm-12 col-md-6")
+        rowDiv.appendChild(colDiv2)
+        
+        let heading = document.createElement("h1")
+        heading.setAttribute("class", "text-center heading")
+        heading.innerText = "Quick Quiz"
+        colDiv2.appendChild(heading)
+
+        let playButton = document.createElement("button")
+        playButton.setAttribute("class", "btn btn-primary btn-lg btn-block bg-color")
+        playButton.setAttribute("id", "play")
+        playButton.innerText = "Play"
+        playButton.setAttribute("onClick", "onPlay()")
+        colDiv2.appendChild(playButton)
+        
+
+        let scoresButton = document.createElement("button")
+        scoresButton.setAttribute("class", "btn btn-primary btn-lg btn-block bg-color")
+        scoresButton.setAttribute("id", "highScores")
+        scoresButton.innerText = "High Scores"
+        scoresButton.setAttribute("onClick", "onHighScores()")
+        colDiv2.appendChild(scoresButton)
+
+        function onHighScores(){
+            window.open("highscores.html", "_self")
+        }
+
+        function onPlay(){
+            window.open("game.html", "_self")
+        }
+        
+        
+
+    </script>
+</html>

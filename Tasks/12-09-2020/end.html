@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        
+    </body>
+    <script src="script.js"></script>
+    <script>
+        document.body.setAttribute("class", "background")
+        let mainDiv = document.createElement("div")
+        mainDiv.setAttribute("class", "container")
+        document.body.appendChild(mainDiv)
+
+        let rowDiv = document.createElement("div")
+        rowDiv.setAttribute("class", "row")
+        mainDiv.appendChild(rowDiv)
+
+        let colDiv1 = document.createElement("div")
+        colDiv1.setAttribute("class", "col-sm-12 col-md-3")
+        rowDiv.appendChild(colDiv1)
+
+        let colDiv2 = document.createElement("div")
+        colDiv2.setAttribute("class", "col-sm-12 col-md-6")
+        rowDiv.appendChild(colDiv2)
+
+        let scoreHeading = document.createElement("h2")
+        scoreHeading.setAttribute("class", "text-center heading")
+        scoreHeading.innerText = "Score: " + getCurrentScore()
+        colDiv2.appendChild(scoreHeading)
+
+
+        let userNameInput = document.createElement("input")
+        userNameInput.setAttribute("type", "text")
+        userNameInput.setAttribute("class", "form-control")
+        userNameInput.setAttribute("value", "")
+        userNameInput.required = true
+        userNameInput.setAttribute("id", "username")
+        userNameInput.setAttribute("placeholder", "User Name")
+        colDiv2.appendChild(userNameInput)
+
+        let buttonDiv = document.createElement("div")
+        buttonDiv.setAttribute("class", "d-flex justify-content-center")
+        colDiv2.appendChild(buttonDiv)
+
+        let saveButton = document.createElement("button")
+        saveButton.setAttribute("class", "btn btn-primary bg-color")
+        saveButton.setAttribute("disabled", "disabled")
+        saveButton.setAttribute("id", "saveScoreBtn")
+        saveButton.innerText = "Save"
+        saveButton.setAttribute("onClick", "onSave()")
+        buttonDiv.appendChild(saveButton)
+        
+        let buttonDiv1 = document.createElement("div")
+        buttonDiv1.setAttribute("class", "d-flex justify-content-center")
+        colDiv2.appendChild(buttonDiv1)
+
+        let playButton = document.createElement("button")
+        playButton.setAttribute("class", "btn btn-primary btn-lg bg-color")
+        playButton.setAttribute("style", "margin-top:30px")
+        playButton.setAttribute("id", "playAgain")
+        playButton.innerText = "Play Again"
+        playButton.setAttribute("onClick", "onPlay()")
+        buttonDiv1.appendChild(playButton)
+
+        let buttonDiv2 = document.createElement("div")
+        buttonDiv2.setAttribute("class", "d-flex justify-content-center")
+        colDiv2.appendChild(buttonDiv2)
+
+        let homeButton = document.createElement("button")
+        homeButton.setAttribute("class", "btn btn-primary btn-lg bg-color")
+        homeButton.setAttribute("id", "goHome")
+        homeButton.innerText = "Go Home"
+        homeButton.setAttribute("onClick", "onHome()")
+        buttonDiv2.appendChild(homeButton)
+
+
+        function onSave(){
+            object = {"userName": document.getElementById("username").value, "score" : getCurrentScore()}
+            addHighScore(object)
+            let alertDiv = document.createElement("div")
+            alertDiv.setAttribute("class", "alert alert-success")
+            alertDiv.setAttribute("role", "alert")
+            alertDiv.setAttribute("style", "margin-top: 50px")
+            alertDiv.setAttribute("id", "alertSucess")
+            alertDiv.innerHTML = "<strong>Success!</strong> Score Recorded"
+            colDiv2.appendChild(alertDiv)
+            deleteAlert()
+        }
+
+        function deleteAlert(){
+            setTimeout(function(){
+                let node = document.getElementById("alertSucess")
+                node.remove()
+            }, 3000)
+        }
+
+        function onPlay(){
+            window.open("game.html", "_self")
+        }
+
+        function onHome(){
+            window.open("index.html", "_self")
+        }
+        username.addEventListener("input", function (e) {
+           if (this.value !== ""){
+               document.getElementById("saveScoreBtn").removeAttribute("disabled")
+           }
+           else{
+            document.getElementById("saveScoreBtn").setAttribute("disabled", "disabled")
+           }
+        });
+
+    </script>
+</html>
