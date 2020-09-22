@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>  
+
+        <style>
+            .remoteDiv{
+                background-color: grey;
+                margin-top: 30%;
+                height: 450px
+            }
+
+            .bg-color{
+                background-color: grey;
+                border: none
+            }
+            button{
+                margin: 6px
+            }
+
+            .margin-class{
+                padding-top: 150px;
+            }
+
+            .margin-class2{
+                padding-top: 105px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" id="rowId">
+                <div class="col-sm-12 col-md-1"></div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="remoteDiv">
+                        <div class="margin-class">
+                            <button type="button" id="previous" class="btn btn-secondary bg-color">
+                                <i class="fas fa-backward fa-5x"></i>
+                            </button>
+                            <button type="button" id="play" class="btn btn-secondary bg-color">
+                                <i class="fas fa-play fa-5x"></i>
+                            </button>
+                            <button type="button" id="next" class="btn btn-secondary bg-color">
+                                <i class="fas fa-forward fa-5x"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </body>
+
+    <script src="script.js"></script>
+    
+    
+</html>
