@@ -30,12 +30,27 @@
         </div>
         
       </div>
-      <input class="form-control hidden" id="searchId" style="margin-bottom: 10px;" type="text" placeholder="Search" aria-label="Search" value="">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+        <input class="form-control hidden" id="searchId"  type="text" placeholder="Search" aria-label="Search" value="">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fas fa-redo-alt" onclick="refresh()"></i>
+          </span>
+          
+        </div>
+      </div>
+      
 
       <div class="row">
           <div class="col-sm-12 col-md-4"></div>
           <div class="col-sm-12 col-md-4">
             <button id="authorize-button" style="margin-top: 30%;" class="btn btn-primary btn-lg btn-block hidden" onclick="handleClientLoad()">Authorize</button>
+            
           </div>
       </div>
       
@@ -135,6 +150,10 @@
           createmailtable(searchInput.value)
         }
       });
+      function refresh(){
+        createmailtable("")
+        searchInput.value = ""
+      }
       function handleClientLoad() {
         gapi.client.setApiKey(apiKey);
         window.setTimeout(checkAuth, 1);
@@ -459,5 +478,6 @@
       }
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   </body>
 </html
