@@ -13,17 +13,34 @@
         height: 600px;
         display: flex;
       }
+      .hidden{display: none;}
+
+      .pad{margin-bottom: 10x;}
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Gmail API demo</h1>
+      <div class="row">
+        <!-- Search form -->
+        <div class="col-6">
+          <h1>Mail App</h1>
+        </div>
+        <div class="col-6">
+          <a href="#compose-modal" style="margin-top: 10px;" data-toggle="modal" id="compose-button" class="btn btn-primary float-right hidden">Compose</a>  
+        </div>
+        
+      </div>
+      <input class="form-control hidden" id="searchId" style="margin-bottom: 10px;" type="text" placeholder="Search" aria-label="Search" value="">
 
-      <a href="#compose-modal" data-toggle="modal" id="compose-button" class="btn btn-primary pull-right hidden">Compose</a>
+      <div class="row">
+          <div class="col-sm-12 col-md-4"></div>
+          <div class="col-sm-12 col-md-4">
+            <button id="authorize-button" style="margin-top: 30%;" class="btn btn-primary btn-lg btn-block hidden" onclick="handleClientLoad()">Authorize</button>
+          </div>
+      </div>
+      
 
-      <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
-
-      <table class="table table-striped table-inbox hidden">
+      <table class="table table-striped table-inbox hidden" id="table-id">
         <thead>
           <tr>
             <th>From</th>
@@ -31,7 +48,7 @@
             <th>Date/Time</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="table-body"></tbody>
       </table>
     </div>
 
@@ -106,10 +123,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-      var clientId = '430210238430-nq1oncvmrb6mtfdct5mqa8ekts5he0v7.apps.googleusercontent.com';
-      var apiKey = 'AIzaSyBCRpxsZ8BMe5Ki9tiKXjr22f84XU9yslI';
-      var scopes = 'https://mail.google.com/'
+      let clientId = '430210238430-nq1oncvmrb6mtfdct5mqa8ekts5he0v7.apps.googleusercontent.com';
+      let apiKey = 'AIzaSyBCRpxsZ8BMe5Ki9tiKXjr22f84XU9yslI';
+      let scopes = 'https://mail.google.com/'
 
+      
+      let searchInput = document.getElementById("searchId");
+      searchInput.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          createmailtable(searchInput.value)
+        }
+      });
       function handleClientLoad() {
         gapi.client.setApiKey(apiKey);
         window.setTimeout(checkAuth, 1);
@@ -134,13 +159,18 @@
 
       function handleAuthResult(authResult) {
         if(authResult && !authResult.error) {
+          document.getElementById('authorize-button').remove()
+          let tablemail = document.getElementById("table-id")
+          tablemail.setAttribute("class", "table table-striped table-inbox")
+          let composeButton = document.getElementById("compose-button")
+          composeButton.setAttribute("class", "btn btn-primary float-right")
+          let searchBar = document.getElementById("searchId")
+          searchBar.setAttribute("class", "form-control")
           loadGmailApi();
-          $('#authorize-button').remove();
-          $('.table-inbox').removeClass("hidden");
-          $('#compose-button').removeClass("hidden");
         } else {
-          $('#authorize-button').removeClass("hidden");
-          $('#authorize-button').on('click', function(){
+          let authButton = document.getElementById("authorize-button")
+          authButton.setAttribute("class", "btn btn-primary btn-lg btn-block")
+          authButton.addEventListener("click", function(){
             handleAuthClick();
           });
         }
@@ -151,102 +181,172 @@
       }
 
       function displayInbox() {
-        var request = gapi.client.gmail.users.messages.list({
+        let request = gapi.client.gmail.users.messages.list({
           'userId': 'me',
           'labelIds': 'INBOX',
-          'maxResults': 10
+          'maxResults': 100
         });
         request.execute(function(response) {
           $.each(response.messages, function() {
-            var messageRequest = gapi.client.gmail.users.messages.get({
+            let messageRequest = gapi.client.gmail.users.messages.get({
               'userId': 'me',
               'id': this.id
             });
-            messageRequest.execute(appendMessageRow);
+            messageRequest.execute(listMails);
           });
         });
       }
+      let mailList = [];
+      function listMails(message){
+        //console.log(message.payload.headers)
+        mailList.push([message.id, message.payload.headers, message.payload])
+        if (mailList.length == 100){
+        createmailtable("");
+        }
+      }
 
-      function appendMessageRow(message) {
-        $('.table-inbox tbody').append(
-          '<tr>\
-            <td>'+getHeader(message.payload.headers, 'From')+'</td>\
-            <td>\
-              <a href="#message-modal-' + message.id +
-                '" data-toggle="modal" id="message-link-' + message.id+'">' +
-                getHeader(message.payload.headers, 'Subject') +
-              '</a>\
-            </td>\
-            <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
-          </tr>'
-        );
-        var reply_to = (getHeader(message.payload.headers, 'Reply-to') !== '' ?
-          getHeader(message.payload.headers, 'Reply-to') :
-          getHeader(message.payload.headers, 'From')).replace(/\"/g, '&quot;');
+      function createmailtable(searchString){
+        console.log(searchString)
+        searchString = searchString.toLowerCase();
+        function filterMails(items){
+          let from = getHeader(items[1], 'From').toLowerCase();
+          let subject = getHeader(items[1], 'Subject').toLowerCase();
+          if (from.includes(searchString) || subject.includes(searchString)){
+              return true;
+          }
+          return false;
+        }
+        let list1;
+        if(searchString === ""){
+          list1 = mailList;
+        }
+        else
+        {
+          list1 = mailList.filter(filterMails);
+          console.log(list1)
+        }
+        
+        console.log(list1.length)
+        let table = document.getElementById('table-id');
+        let oldtableBody = document.getElementById('table-body');
+        if (oldtableBody != null || oldtableBody != undefined){
+          oldtableBody.remove()
+        }
+        
+        let tableBody =document.createElement("tbody")
+        tableBody.setAttribute("id", "table-body")
+        table.appendChild(tableBody)
+        console.log(table)
+        for(let i=0; i < list1.length; i++){
+          console.log(list1.length)
+          let tr1 = document.createElement("tr")
+          tableBody.appendChild(tr1)
+          let td1 = document.createElement("td");
+          td1.innerText = getHeader(list1[i][1], 'From')
+          tr1.appendChild(td1)
+          let td2 = document.createElement("td")
+          let anchor = document.createElement("a")
+          anchor.setAttribute("href", "#message-modal-" + list1[i][0])
+          anchor.setAttribute("data-toggle", "modal")
+          anchor.innerText = getHeader(list1[i][1], 'Subject')
+          anchor.setAttribute("id", "message-link-" + list1[i][0])
+          td2.appendChild(anchor)
+          tr1.appendChild(td2)
+          let td3 = document.createElement("td")
+          td3.innerText = getHeader(list1[i][1], 'Date')
+          tr1.appendChild(td3)
 
-        var reply_subject = 'Re: '+getHeader(message.payload.headers, 'Subject').replace(/\"/g, '&quot;');
-        $('body').append(
-          '<div class="modal fade" id="message-modal-' + message.id +
-              '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
-            <div class="modal-dialog modal-lg">\
-              <div class="modal-content">\
-                <div class="modal-header">\
-                  <h5 class="modal-title" id="myModalLabel">'
-                    +
-                    getHeader(message.payload.headers, 'Subject')
-                    +'</h5>\
-                  <button type="button"\
-                          class="close"\
-                          data-dismiss="modal"\
-                          aria-label="Close">\
-                    <span aria-hidden="true">&times;</span></button>'
-                     +
-                '</div>\
-                <div class="modal-body">\
-                  <iframe id="message-iframe-'+message.id+'" srcdoc="<p>Loading...</p>">\
-                  </iframe>\
-                </div>\
-                <div class="modal-footer">\
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-                  <button type="button" class="btn btn-primary reply-button" data-dismiss="modal" data-toggle="modal" data-target="#reply-modal"\
-                  onclick="fillInReply(\
-                    \''+reply_to+'\', \
-                    \''+reply_subject+'\', \
-                    \''+getHeader(message.payload.headers, 'Message-ID')+'\'\
-                    );"\
-                  >Reply</button>\
-                </div>\
-              </div>\
-            </div>\
-          </div>'
-        );
-        $('#message-link-'+message.id).on('click', function(){
-          var ifrm = $('#message-iframe-'+message.id)[0].contentWindow.document;
-          $('body', ifrm).html(getBody(message.payload));
+          let reply_to = (getHeader(list1[i][1], 'Reply-to') !== '' ?
+          getHeader(list1[i][1], 'Reply-to') :
+          getHeader(list1[i][1], 'From')).replace(/\"/g, '&quot;');
+          let reply_subject = 'Re: '+getHeader(list1[i][1], 'Subject').replace(/\"/g, '&quot;');
+
+          let modalDiv = document.createElement("div")
+          modalDiv.setAttribute("class", "modal fade")
+          modalDiv.setAttribute("id", "message-modal-" + list1[i][0])
+          modalDiv.setAttribute("tabindex", "-1")
+          modalDiv.setAttribute("role", "dialog")
+          modalDiv.setAttribute("aria-labelledby", "myModalLabel")
+          document.body.appendChild(modalDiv)
+
+          let modalDiv2 = document.createElement("div")
+          modalDiv2.setAttribute("class", "modal-dialog modal-lg")
+          modalDiv.appendChild(modalDiv2)
+
+          let modalDiv3 = document.createElement("div")
+          modalDiv3.setAttribute("class", "modal-content")
+          modalDiv2.appendChild(modalDiv3)
+
+          let modalDiv4 = document.createElement("div")
+          modalDiv4.setAttribute("class", "modal-header")
+          modalDiv3.appendChild(modalDiv4)
+
+          let heading = document.createElement("h5")
+          heading.setAttribute("class", "modal-title")
+          heading.setAttribute("id", "myModalLabel")
+          heading.innerHTML = getHeader(list1[i][1], 'Subject')
+          modalDiv4.appendChild(heading)
+
+          let closeButton = document.createElement("button")
+          closeButton.setAttribute("type", "button")
+          closeButton.setAttribute("class", "close")
+          closeButton.setAttribute("data-dismiss", "modal")
+          closeButton.setAttribute("aria-label", "close")
+          let span1 = document.createElement("span")
+          span1.setAttribute("aria-hidden", "true")
+          span1.innerHTML = '&times';
+          closeButton.appendChild(span1)
+          modalDiv4.appendChild(closeButton)
+
+          let modalBody = document.createElement("div")
+          modalBody.setAttribute("class", "modal-body")
+          let ifrmae1 = document.createElement("iframe")
+          ifrmae1.setAttribute("id", "message-iframe-" + list1[i][0])
+          ifrmae1.setAttribute("srcdoc", "<p>Loading...</p>")
+          modalBody.appendChild(ifrmae1)
+          modalDiv3.appendChild(modalBody)
+
+          let modalfooter = document.createElement("div")
+          modalfooter.setAttribute("class", "modal-footer")
+          let button1 = document.createElement("button")
+          button1.setAttribute("type", "button")
+          button1.setAttribute("class", "btn btn-default")
+          button1.setAttribute("data-dismiss", "modal")
+          button1.innerHTML = "Close"
+          modalfooter.appendChild(button1)
+          let button2 = document.createElement("button")
+          button2.setAttribute("type", "button")
+          button2.setAttribute("class", "btn btn-primary reply-button")
+          button2.setAttribute("data-dismiss", "modal")
+          button2.setAttribute("id", "reply-button1")
+          button2.setAttribute("data-toggle", "modal")
+          button2.setAttribute("data-target", "#reply-modal")
+          let messageId = getHeader(list1[i][1], 'Message-ID');
+          let funct = "fillInReply('" + reply_to + "','" + reply_subject + "','" + messageId + "');";
+         // console.log(funct)
+          button2.setAttribute("onClick", funct)
+          button2.innerHTML = "Reply"
+          modalfooter.appendChild(button2)
+          modalDiv3.appendChild(modalfooter)
+
+          $('#message-link-'+list1[i][0]).on('click', function(){
+            let ifrm = $('#message-iframe-'+list1[i][0])[0].contentWindow.document;
+          $('body', ifrm).html(getBody(list1[i][2]));
         });
+        }
       }
-
-      var t = null;
-      function getClientRequestHeaders() {
-          if(!t) t = gapi.auth.getToken();
-          gapi.auth.setToken({token: t['access_token']});
-          var a = "Bearer " + t["access_token"];
-          return {
-              "Authorization": a,
-              "X-JavaScript-User-Agent": "Google APIs Explorer"
-          };
-      }
-
+      
       function sendEmail()
       {
-        $('#send-button').addClass('disabled');
-
+        let sendButton = document.getElementById("send-button")
+        sendButton.setAttribute("class", "btn btn-primary disabled")
+        //console.log(document.getElementById("compose-subject").value)
         sendMessage(
           {
-            'To': $('#compose-to').val(),
-            'Subject': $('#compose-subject').val()
+            'To': document.getElementById("compose-to").value,
+            'Subject': document.getElementById("compose-subject").value
           },
-          $('#compose-message').val(),
+          document.getElementById("compose-subject").value,
           composeTidy
         );
 
@@ -256,25 +356,26 @@
       function composeTidy()
       {
         $('#compose-modal').modal('hide');
-
-        $('#compose-to').val('');
-        $('#compose-subject').val('');
-        $('#compose-message').val('');
-
-        $('#send-button').removeClass('disabled');
+        document.getElementById("compose-to").value = "";
+        document.getElementById("compose-subject").value = "";
+        document.getElementById("compose-message").value = "";
+        
+        let sendButton = document.getElementById("send-button")
+        sendButton.setAttribute("class", "btn btn-primary")
       }
 
       function sendReply()
       {
-        $('#reply-button').addClass('disabled');
+        let sendButton = document.getElementById("reply-button1")
+        sendButton.setAttribute("class", "btn btn-primary disabled")
 
         sendMessage(
           {
-            'To': $('#reply-to').val(),
-            'Subject': $('#reply-subject').val(),
-            'In-Reply-To': $('#reply-message-id').val()
+            'To': document.getElementById("reply-to").value,
+            'Subject': document.getElementById("reply-subject").value,
+            'In-Reply-To': document.getElementById("reply-message-id").value
           },
-          $('#reply-message').val(),
+          document.getElementById("reply-message").value,
           replyTidy
         );
 
@@ -284,10 +385,9 @@
       function replyTidy()
       {
         $('#reply-modal').modal('hide');
-
-        $('#reply-message').val('');
-
-        $('#reply-button').removeClass('disabled');
+        document.getElementById("reply-message").value = "";
+        let sendButton = document.getElementById("reply-button1")
+        sendButton.setAttribute("class", "btn btn-primary")
       }
 
       function fillInReply(to, subject, message_id)
@@ -299,14 +399,14 @@
 
       function sendMessage(headers_obj, message, callback)
       {
-        var email = '';
+        let email = '';
         console.log(headers_obj)
-        for(var header in headers_obj)
+        for(let header in headers_obj)
           email += header += ": "+headers_obj[header]+"\r\n";
 
         email += "\r\n" + message;
         console.log(email)
-        var sendRequest = gapi.client.gmail.users.messages.send({
+        let sendRequest = gapi.client.gmail.users.messages.send({
           'userId': 'me',
           'resource': {
             'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
@@ -317,7 +417,7 @@
       }
 
       function getHeader(headers, index) {
-        var header = '';
+        let header = '';
         $.each(headers, function(){
           if(this.name.toLowerCase() === index.toLowerCase()){
             header = this.value;
@@ -327,7 +427,7 @@
       }
 
       function getBody(message) {
-        var encodedBody = '';
+        let encodedBody = '';
         if(typeof message.parts === 'undefined')
         {
           encodedBody = message.body.data;
@@ -341,7 +441,7 @@
       }
 
       function getHTMLPart(arr) {
-        for(var x = 0; x <= arr.length; x++)
+        for(let x = 0; x <= arr.length; x++)
         {
           if(typeof arr[x].parts === 'undefined')
           {
