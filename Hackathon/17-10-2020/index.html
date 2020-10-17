@@ -302,43 +302,16 @@
       function sendMessage(headers_obj, message, callback)
       {
         var email = '';
-        var headers = getClientRequestHeaders();
-        var path = "gmail/v1/users/me/messages/send?key=" + clientId;
         console.log(headers_obj)
-        console.log(message)
         for(var header in headers_obj)
           email += header += ": "+headers_obj[header]+"\r\n";
 
         email += "\r\n" + message;
         console.log(email)
-        var content     = 'HELLO';
-    // I have an email account on GMail.  Lets call it 'theSenderEmail@gmail.com'
-    var sender      = 'koushik8.kolli@gmail.com';
-    // And an email account on Hotmail.  Lets call it 'theReceiverEmail@gmail.com'\
-    // Note: I tried several 'receiver' email accounts, including one on GMail.  None received the email.
-    var receiver    = 'koushikl@campusuvce.in';
-    var to          = 'To: '   +receiver;
-    var from        = 'From: ' +sender;
-    var subject     = 'Subject: ' +'HELLO TEST';
-    var contentType = 'Content-Type: text/plain; charset=utf-8';
-    var mime        = 'MIME-Version: 1.0';
-
-    var message = "";
-    message +=   to             +"\r\n";
-    message +=   from           +"\r\n";
-    message +=   subject        +"\r\n";
-    message +=   contentType    +"\r\n";
-    message +=   mime           +"\r\n";
-    message +=    "\r\n"        + content;
-    console.log(message)
-        var base64EncodedEmail = btoa(message).replace(/\+/g, '-').replace(/\//g, '_');
-        console.log(base64EncodedEmail)
-        var sendRequest = gapi.client.request({
-          path: path,
-          method: "POST",
-          headers: headers,
-          body: {
-            'raw': base64EncodedEmail
+        var sendRequest = gapi.client.gmail.users.messages.send({
+          'userId': 'me',
+          'resource': {
+            'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
           }
         });
 
