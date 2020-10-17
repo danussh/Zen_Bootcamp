@@ -225,7 +225,6 @@
       }
 
       function createmailtable(searchString){
-        console.log(searchString)
         searchString = searchString.toLowerCase();
         function filterMails(items){
           let from = getHeader(items[1], 'From').toLowerCase();
@@ -245,7 +244,6 @@
           console.log(list1)
         }
         
-        console.log(list1.length)
         let table = document.getElementById('table-id');
         let oldtableBody = document.getElementById('table-body');
         if (oldtableBody != null || oldtableBody != undefined){
@@ -255,9 +253,7 @@
         let tableBody =document.createElement("tbody")
         tableBody.setAttribute("id", "table-body")
         table.appendChild(tableBody)
-        console.log(table)
         for(let i=0; i < list1.length; i++){
-          console.log(list1.length)
           let tr1 = document.createElement("tr")
           tableBody.appendChild(tr1)
           let td1 = document.createElement("td");
@@ -419,12 +415,10 @@
       function sendMessage(headers_obj, message, callback)
       {
         let email = '';
-        console.log(headers_obj)
         for(let header in headers_obj)
           email += header += ": "+headers_obj[header]+"\r\n";
 
         email += "\r\n" + message;
-        console.log(email)
         let sendRequest = gapi.client.gmail.users.messages.send({
           'userId': 'me',
           'resource': {
