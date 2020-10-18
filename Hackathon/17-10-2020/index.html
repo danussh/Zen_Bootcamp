@@ -147,11 +147,11 @@
       searchInput.addEventListener("keyup", function(event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
-          createmailtable(searchInput.value)
+          prepareMailList(searchInput.value)
         }
       });
       function refresh(){
-        createmailtable("")
+        prepareMailList("")
         searchInput.value = ""
       }
       function handleClientLoad() {
@@ -199,6 +199,8 @@
         gapi.client.load('gmail', 'v1', displayInbox);
       }
 
+      
+
       function displayInbox() {
         let request = gapi.client.gmail.users.messages.list({
           'userId': 'me',
@@ -216,15 +218,23 @@
         });
       }
       let mailList = [];
+      let state = {}
       function listMails(message){
         //console.log(message.payload.headers)
         mailList.push([message.id, message.payload.headers, message.payload])
         if (mailList.length == 100){
-        createmailtable("");
+          state = {
+              'dataset' : mailList,
+              'page' : 1,
+              'rows' : 10
+          }
+          prepareMailList("");
+          
+
         }
       }
 
-      function createmailtable(searchString){
+      function prepareMailList(searchString){
         searchString = searchString.toLowerCase();
         function filterMails(items){
           let from = getHeader(items[1], 'From').toLowerCase();
@@ -241,18 +251,30 @@
         else
         {
           list1 = mailList.filter(filterMails);
-          console.log(list1)
         }
+        list1.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(getHeader(b[1], 'Date')) - new Date(getHeader(a[1], 'Date'));
+        });
+        state.dataset = list1
+        buildNavBar();
+        createmailtable()
+      }
+
+      function createmailtable(){
         
         let table = document.getElementById('table-id');
         let oldtableBody = document.getElementById('table-body');
-        if (oldtableBody != null || oldtableBody != undefined){
+        if (oldtableBody != null && oldtableBody != undefined){
           oldtableBody.remove()
         }
         
         let tableBody =document.createElement("tbody")
         tableBody.setAttribute("id", "table-body")
         table.appendChild(tableBody)
+        let data = pagination(state.dataset, state.page, state.rows)
+        let list1 = data.dataset
         for(let i=0; i < list1.length; i++){
           let tr1 = document.createElement("tr")
           tableBody.appendChild(tr1)
@@ -470,6 +492,134 @@
         }
         return '';
       }
+      
+
+            function buildNavBar(){
+              let navDiv = document.getElementById("navbarId")
+              if (navDiv !== null && navDiv !== undefined){
+                navDiv.remove()
+              }
+              let secondDiv = document.createElement("div")
+              secondDiv.setAttribute("class", "d-flex justify-content-center")
+              secondDiv.setAttribute("id", "navbarId")
+              document.body.appendChild(secondDiv)
+
+              let navBar = document.createElement("nav")
+              navBar.setAttribute("aria-label", "Page navigation exapmle")
+              secondDiv.appendChild(navBar)
+                let ul1 = document.createElement("ul")
+                ul1.setAttribute("class", "pagination")
+                navBar.appendChild(ul1)
+
+                let lif = document.createElement("li")
+                lif.setAttribute("class", "page-item")
+                ul1.appendChild(lif)
+
+                let af =  document.createElement("a")
+                af.setAttribute("class", "page-link")
+                af.setAttribute("href", "#")
+                af.setAttribute("aria-label", "Previous")
+                af.setAttribute("onclick", "onPrevious()")
+                lif.appendChild(af)
+
+                let spanf1 = document.createElement("span")
+                spanf1.setAttribute("aria-hidden", "true")
+                spanf1.innerHTML = "&laquo;"
+                af.appendChild(spanf1)
+
+                let spanf2 = document.createElement("span")
+                spanf2.setAttribute("class", "sr-only")
+                spanf2.innerText = "Previous;"
+                af.appendChild(spanf2)
+                let pageData = pagination(state.dataset, state.page, state.rows)
+                let pages = pageData.pages
+
+                let count = 1
+                while (count <= pages){
+                    let lic = document.createElement("li")
+                    lic.setAttribute("class", "page-item")
+                    ul1.appendChild(lic)
+
+                    let ac =  document.createElement("a")
+                    ac.setAttribute("class", "page-link")
+                    ac.setAttribute("id", count)
+                    ac.setAttribute("onclick", "onPaginationClick(this.id)")
+                    ac.setAttribute("href", "#")
+                    ac.innerText = count
+                    lic.appendChild(ac)
+                    count ++
+                }
+
+                let lil = document.createElement("li")
+                lil.setAttribute("class", "page-item")
+                ul1.appendChild(lil)
+
+
+                let al =  document.createElement("a")
+                al.setAttribute("class", "page-link")
+                al.setAttribute("href", "#")
+                al.setAttribute("aria-label", "Next")
+                al.setAttribute("onclick", "onNext()")
+                lil.appendChild(al)
+
+                let spanl1 = document.createElement("span")
+                spanl1.setAttribute("aria-hidden", "true")
+                spanl1.innerHTML = "&raquo;"
+                al.appendChild(spanl1)
+
+                let spanl2 = document.createElement("span")
+                spanl2.setAttribute("class", "sr-only")
+                spanl2.innerText = "Next"
+                al.appendChild(spanl2)
+
+            }
+            
+          function pagination(dataset, page, rows){
+              let start = (page - 1) * rows
+              let end = start + rows
+              let currentData = dataset.slice(start, end)
+              let pages = Math.ceil(dataset.length / rows)
+              return {
+                  "dataset" : currentData,
+                  "pages": pages
+              }
+          }
+
+          function onPaginationClick(value){
+              var node = document.getElementById('table-body');
+              if (node !== null && node !==undefined){
+                    node.remove()
+                  }
+              state.page = value
+              createmailtable()
+          }
+
+          function onPrevious(){
+              if (state.page > 1){
+                  var node = document.getElementById('table-body');
+                  if (node !== null && node !==undefined){
+                    node.remove()
+                  }
+                  
+                  state.page = state.page - 1
+                  console.log(state.page)
+                  createmailtable()
+              }
+          }
+
+
+          function onNext(){
+              let data = pagination(state.dataset, state.page, state.rows)
+              if (state.page < data.pages){
+                  var node = document.getElementById('table-body');
+                  if (node !== null && node !==undefined){
+                    node.remove()
+                  }
+                  state.page = +state.page + 1
+                  createmailtable()
+              }
+          }
+
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
