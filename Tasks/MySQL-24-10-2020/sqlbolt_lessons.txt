@@ -1,0 +1,94 @@
+-- SQL Lesson 1
+SELECT title FROM movies;
+SELECT director FROM movies; 
+SELECT title, director FROM movies; 
+SELECT title, year FROM movies; 
+SELECT * FROM movies;
+ 
+-- SQL Lesson 2
+SELECT id, title FROM movies WHERE id = 6;
+SELECT title, year FROM movies WHERE year BETWEEN 2000 AND 2010;
+SELECT title, year FROM movies WHERE year < 2000 OR year > 2010;
+SELECT title, year FROM movies WHERE year <= 2003;
+
+-- SQL Lesson 3
+SELECT * FROM movies where title like "%Toy Story%";
+SELECT * FROM movies where director ='John Lasseter';
+SELECT * FROM movies where director !='John Lasseter';
+SELECT * FROM movies where title like 'WALL-%';
+
+
+-- SQL Lesson 4
+SELECT DISTINCT Director FROM movies order by Director;
+SELECT title FROM movies order by year desc limit 4;
+SELECT title FROM movies order by title limit 5;
+SELECT title FROM movies order by title limit 5 offset 5;
+
+-- SQL Lesson 5
+SELECT city, population FROM north_american_cities where country='Canada';
+SELECT * FROM north_american_cities where country='United States' order by latitude desc;
+SELECT city FROM north_american_cities where longitude < -87.629798 order by longitude;
+SELECT city FROM north_american_cities where country = 'Mexico' order by population desc limit 2;
+SELECT city FROM north_american_cities where country = 'United States' order by population desc limit 2 offset 2;
+
+-- SQL Lesson 6
+SELECT * FROM movies m inner join boxoffice b on m.id = b.movie_id;
+SELECT * FROM movies m inner join boxoffice b on m.id = b.movie_id where b.international_sales > b.domestic_sales;
+SELECT title FROM movies m inner join boxoffice b on m.id = b.movie_id order by b.rating desc;
+
+-- SQL Lesson 7
+SELECT distinct building from employees;
+SELECT * from buildings;
+SELECT distinct b.building_name, e.role from buildings b left join employees e on e.building=b.building_name;
+
+-- SQL Lesson 8
+SELECT role, name FROM employees where building is NULL;
+SELECT building_name from buildings b left join employees e on e.building=b.building_name where name is NULL;
+
+
+-- SQL Lesson 9
+SELECT title, (domestic_sales + international_sales) / 1000000 as total_sales_in_millions  FROM movies m inner join boxoffice b on m.id = b.movie_id;
+SELECT title, rating*10 as rating_percentage  FROM movies m inner join boxoffice b on m.id = b.movie_id;
+SELECT * from movies where year % 2 = 0;
+
+-- SQL Lesson 10
+SELECT max(years_employed) FROM employees;
+SELECT role, avg(years_employed) from employees group by role;
+SELECT building, sum(years_employed) from employees group by building;
+
+
+-- SQL Lesson 11
+SELECT count(*) FROM employees where role ='Artist';
+SELECT role, count(*) FROM employees group by role;
+SELECT sum(years_employed) FROM employees where role='Engineer';
+
+
+-- SQL Lesson 12
+SELECT director, count(*) from movies group by director;
+SELECT director, sum(domestic_sales + international_sales) as sales from movies m inner join boxoffice b on b.movie_id = m.id group by director;
+
+-- SQL Lesson 13
+INSERT INTO movies values(15, 'Toy Story 4', 'John Lasseter', 2020, 123);
+INSERT INTO boxoffice values(15, 8.7, 340000000, 270000000);
+
+-- SQL Lesson 14
+UPDATE movies set director='John Lasseter' where title = 'A Bug''s Life';
+UPDATE movies set year = 1999 where title='Toy Story 2';
+UPDATE movies set title = 'Toy Story 3', director = 'Lee Unkrich' where title = 'Toy Story 8';
+
+
+-- SQL Lesson 15
+DELETE from movies where year < 2005;
+DELETE FROM movies where director = 'Andrew Stanton';
+
+-- SQL Lesson 16
+CREATE TABLE Database (Name varchar(100), Version float, Download_count integer);
+
+-- SQL Lesson 17
+ALTER TABLE movies ADD COLUMN Aspect_ratio float;
+ALTER TABLE Movies ADD COLUMN Language text DEFAULT "English";
+
+-- SQL Lesson 18
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS boxoffice;
+
