@@ -1,0 +1,397 @@
+# Data
+[
+{
+    "Id" : 1,
+    "Name": "abc",
+    "Mentor_Id": 1
+},
+{
+    "Id" : 2,
+    "Name": "abc1",
+    "Mentor_Id": 1
+},
+{
+    "Id" : 3,
+    "Name": "abc2",
+    "Mentor_Id": 1
+},
+{
+    "Id" : 4,
+    "Name": "abc3",
+    "Mentor_Id": 2
+},
+{
+    "Id" : 5,
+    "Name": "abc4",
+    "Mentor_Id": 3
+}
+
+]
+
+
+[
+{
+    "Problem_Id" : 1,
+    "Id" : 1,
+    "Category": "Arrays",
+    "Difficulty": "Easy",
+    "Status" : "Success"
+},
+{
+    "Problem_Id" : 1,
+    "Id" : 2,
+    "Category": "Arrays",
+    "Difficulty": "Easy",
+    "Status" : "Error"
+},
+{
+    "Problem_Id" : 3,
+    "Id" : 3,
+    "Category": "Linked List",
+    "Difficulty": "Medium",
+    "Status" : "Success"
+},
+{
+    "Problem_Id" : 3,
+    "Id" : 4,
+    "Category": "Linked List",
+    "Difficulty": "Medium",
+    "Status" : "Success"
+},
+{
+    "Problem_Id" : 4,
+    "Id" : 5,
+    "Category": "Hash Map",
+    "Difficulty": "Hard",
+    "Status" : "Success"
+}
+
+]
+
+
+
+[
+{
+    "Topic_Id" : 1,
+    "Topic_Name": "JavaScript",
+    "Month": "August",
+
+},
+{
+    "Topic_Id" : 2,
+    "Topic_Name": "TypeSrcipt",
+    "Month": "September",
+},
+{
+    "Topic_Id" : 3,
+    "Topic_Name": "MySQL",
+    "Month": "October",
+},
+{
+    "Topic_Id" : 4,
+    "Topic_Name": "MongoDB",
+    "Month": "October",
+},
+{
+    "Topic_Id" : 5,
+    "Topic_Name": "NodeJS",
+    "Month": "August",
+}
+
+]
+
+
+
+[
+{
+    "Task_Id": 1,
+    "Task_name": "JavaScript OOPS",
+    "Topic_Id" : 1
+},
+{
+    "Task_Id": 2,
+    "Task_name": "Pet shop using TypeScript",
+    "Topic_Id" : 1
+},
+{
+    "Task_Id": 3,
+    "Task_name": "Create social database",
+    "Topic_Id" : 3
+},
+{
+    "Task_Id": 4,
+    "Task_name": "Create GUVI database",
+    "Topic_Id" : 4
+},
+{
+    "Task_Id": 5,
+    "Task_name": "Using MongoDB in NodeJS",
+    "Topic_Id" : 5   
+}
+
+]
+
+
+
+[
+{
+    "Date" : ISODate("2020-10-25T00:00:00.000Z"),
+    "Students_Id":1,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-25T00:00:00.000Z"),
+    "Students_Id":2,
+    "Attendace_Status": "Absent" 
+},
+{
+    "Date" : ISODate("2020-10-25T00:00:00.000Z"),
+    "Students_Id":3,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-25T00:00:00.000Z"),
+    "Students_Id":4,
+    "Attendace_Status": "Present" 
+},
+{
+   "Date" : ISODate("2020-10-25T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Present" 
+},
+
+{
+    "Date" : ISODate("2020-10-26T00:00:00.000Z"),
+    "Students_Id":1,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-26T00:00:00.000Z"),
+    "Students_Id":2,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-26T00:00:00.000Z"),
+    "Students_Id":3,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-26T00:00:00.000Z"),
+    "Students_Id":4,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-10-26T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Id":2,
+    "Attendace_Status": "Absent" 
+},
+{
+    "Date" : ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Id":3,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Id":4,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-22T00:00:00.000Z"),
+    "Students_Id":1,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-22T00:00:00.000Z"),
+    "Students_Id":2,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-22T00:00:00.000Z"),
+    "Students_Id":3,
+    "Attendace_Status": "Absent" 
+},
+{
+    "Date" : ISODate("2020-11-22T00:00:00.000Z"),
+    "Students_Id":4,
+    "Attendace_Status": "Absent" 
+},
+{
+    "Date" : ISODate("2020-11-22T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Id":1,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Id":2,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Id":3,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Id":4,
+    "Attendace_Status": "Present" 
+},
+{
+    "Date" : ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Id":5,
+    "Attendace_Status": "Absent" 
+}
+
+]
+
+
+[
+{
+    "Mentor_Id" :1,
+    "Mentor_Name": "John"
+},
+{
+    "Mentor_Id" :2,
+    "Mentor_Name": "John1"
+},
+{
+    "Mentor_Id" :3,
+    "Mentor_Name": "John2"
+},
+{
+    "Mentor_Id" :4,
+    "Mentor_Name": "John3"
+},
+{
+    "Mentor_Id" :5,
+    "Mentor_Name": "John4"
+}
+
+]
+
+
+[
+{
+    "Comapny_Id": 1,
+    "Company_Name": "company1",
+    "Drive_Date": ISODate("2020-11-12T00:00:00.000Z"),
+    "Students_Attended": [1,2,3]
+},
+{
+    "Comapny_Id": 2,
+    "Company_Name": "company2",
+    "Drive_Date": ISODate("2020-11-12T00:00:00.000Z"),
+    "Students_Attended": [4,5]
+},
+{
+    "Comapny_Id": 3,
+    "Company_Name": "company3",
+    "Drive_Date": ISODate("2020-11-16T00:00:00.000Z"),
+    "Students_Attended": [1,2,4]
+},
+{
+    "Comapny_Id": 4,
+    "Company_Name": "company4",
+    "Drive_Date": ISODate("2020-11-17T00:00:00.000Z"),
+    "Students_Attended": [2,3,5]
+},
+{
+    "Comapny_Id": 5,
+    "Company_Name": "company5",
+    "Drive_Date": ISODate("2020-11-25T00:00:00.000Z"),
+    "Students_Attended": [1,2,3,4]  
+}
+
+]
+
+# Find all the topics and tasks which are thought in the month of October
+
+db.topics.aggregate([
+{$lookup:{from:"tasks",localField:"Topic_Id", foreignField:"Topic_Id",as:"Topic"}},
+{$match:{Month:"October"}},{$unwind:"$Topic"},
+{$project:{"Topic Name":"$Topic_Name","Task_Name":"$Topic.Task_name"}}
+])
+
+
+
+# Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+db.company_drives.find({
+    Drive_Date: {
+        $gte: ISODate("2020-11-15T00:00:00.000Z"),
+        $lt: ISODate("2020-11-31T00:00:00.000Z")
+    }
+});
+
+
+
+# Find all the company drives and students who are appeared for the placement.
+
+db.company_drives.aggregate([{$unwind: "$Students_Attended"}, 
+{$lookup:{from:"users", localField:"Students_Attended", foreignField:"Id", as:"Users"}},
+{$unwind: "$Users"},
+{$project:{"Company Name:": "$Company_Name", "Derive Date:" : "$Drive_Date", "Student Name:":"$Users.Name"}}
+])
+
+
+# Find the number of problems solved by the user in codekata
+
+db.codekata.aggregate([
+    {"$group" : {_id:"$Id", count:{$sum:1}}}
+]);
+
+
+# Find all the mentors with who has the mentee's count more than 2
+
+db.users.aggregate([
+{$group : {_id:"$Mentor_Id", count:{$sum:1}}},
+{$match: {count:{$gte: 2}}},
+{$lookup:{from:"mentors", localField:"_id", foreignField:"Mentor_Id", as: "Mentors"}},
+{$unwind: "$Mentors"},
+{$project: {"Mentor Name:": "$Mentors.Mentor_Name"}}
+])
+
+
+# Find all the mentors with who has the mentee's count more than 15
+
+db.users.aggregate([
+{$group : {_id:"$Mentor_Id", count:{$sum:1}}},
+{$match: {count:{$gte: 15}}},
+{$lookup:{from:"mentors", localField:"_id", foreignField:"Mentor_Id", as: "Mentors"}},
+{$unwind: "$Mentors"},
+{$project: {"Mentor Name:": "$Mentors.Mentor_Name"}}
+])
+
+
+
+# Find the number of users who are absent between 15 oct-2020 and 31-oct-2020
+db.attendace_register.aggregate([
+{$match : {$and : [{Date:{
+        $gte: ISODate("2020-11-15T00:00:00.000Z"),
+        $lt: ISODate("2020-11-31T00:00:00.000Z")
+    }}, {Attendace_Status:"Absent"}]}},
+ {$group : {_id:"_id", count:{$sum:1}}}
+])
+
+
+
+
