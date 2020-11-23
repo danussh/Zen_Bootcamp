@@ -2,7 +2,7 @@ let mentorDetails = []
 let assignedStudentDetails = []
 let unAssignedStudentDetails = []
 
-let url = "http://localhost:3000"
+let url = "https://mentorassign.herokuapp.com"
 
 function getAssignedStudents() {
     fetch(url + `/get_assigned_students`)
@@ -304,6 +304,11 @@ function onChange(){
 
 function onStudentSelect(objectId){
     let mentorSelect = document.getElementById("changeMentorId")
+    removeAllChildNodes(mentorSelect)
+    let option2 = document.createElement("option")
+    option2.innerText = "--Select--"
+    option2.setAttribute("value", "") 
+    mentorSelect.appendChild(option2)
     let currentMentor = document.getElementById("currentMentor")
     let mentorSelectDiv = document.getElementById("mentorChangeId")
     mentorSelectDiv.setAttribute("class", "form-group row")
